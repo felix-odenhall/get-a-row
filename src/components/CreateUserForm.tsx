@@ -1,11 +1,22 @@
+import { ChangeEvent } from "react";
+
 interface CreateUserFormProps {
   username: string;
   setUsername: (username: string) => void;
+  setActivePlayer: (username: string) => void;
 }
 
-const CreateUserForm = ({ username, setUsername }: CreateUserFormProps) => {
+const CreateUserForm = ({
+  username,
+  setUsername,
+  setActivePlayer,
+}: CreateUserFormProps) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setUsername(event.target.value);
+  };
+
   const addUser = () => {
-    console.log(username);
+    setActivePlayer(username);
   };
 
   return (
@@ -13,7 +24,8 @@ const CreateUserForm = ({ username, setUsername }: CreateUserFormProps) => {
       <input
         type="text"
         placeholder="Enter your name"
-        onChange={(e) => setUsername(e.target.value)}
+        value={username}
+        onChange={handleChange}
       />
       <button onClick={addUser}>Add user</button>
     </>
