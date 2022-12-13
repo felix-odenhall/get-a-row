@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import CreateUserForm from "../components/CreateUserForm";
+import StartGameComponent from "../components/StartGameComponent";
 
 function Home() {
   const [username, setUsername] = useState<string>("");
@@ -11,7 +12,7 @@ function Home() {
         setUsername={setUsername}
         setActivePlayer={setActivePlayer}
       />
-      {activePlayer}
+      <StartGameComponent activePlayer={activePlayer} />
     </>
   );
 }
