@@ -1,44 +1,29 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import CreateUserForm from "../components/CreateUserForm";
 import StartGameComponent from "../components/StartGameComponent";
+import { getFromLocalStorage, parseLocalStorage } from "../utils/localStorage";
 
 function Home() {
-  const [username, setUsername] = useState<string>("");
-  const [activePlayer, setActivePlayer] = useState<string>("");
+  const [hasUsername, setHasUsername] = useState(false);
 
-  const hasAUsernameFn = () => {
-    if (activePlayer === "") {
-      return (
-        <>
-          <CreateUserForm
-            username={username}
-            setUsername={setUsername}
-            setActivePlayer={setActivePlayer}
-          />
-        </>
-      );
-    } else {
-      return (
-        <>
-          <StartGameComponent
-            setActivePlayer={setActivePlayer}
-            activePlayer={activePlayer}
-            username={username}
-            setUsername={setUsername}
-          />
-        </>
-      );
-    }
-  };
+  const isAPlayer = parseLocalStorage(getFromLocalStorage("Username_Getarow"));
 
-  useEffect(() => {
-    console.log("change happened");
-    setActivePlayer("");
-  }, [username]);
-
-  const hasAUser = hasAUsernameFn();
-
-  return <>{hasAUser}</>;
+  console.log(hasUsername);
+  return (
+    <>
+      {!isAPlayer && !hasUsername ? (
+        <CreateUserForm
+          hasUsername={hasUsername}
+          setHasUsername={setHasUsername}
+        />
+      ) : (
+        <StartGameComponent
+          hasUsername={hasUsername}
+          setHasUsername={setHasUsername}
+        />
+      )}
+    </>
+  );
 }
 
 export default Home;

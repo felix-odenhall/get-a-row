@@ -1,33 +1,34 @@
-import { ChangeEvent } from "react";
+import { useState } from "react";
+import { hasUsername } from "../interfaces";
+import {
+  getFromLocalStorage,
+  parseLocalStorage,
+  saveToLocalStorage,
+} from "../utils/localStorage";
 
-interface CreateUserFormProps {
-  username: string;
-  setUsername: (username: string) => void;
-  setActivePlayer: (username: string) => void;
-}
-
-const CreateUserForm = ({
-  username,
-  setUsername,
-  setActivePlayer,
-}: CreateUserFormProps) => {
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setUsername(event.target.value);
-  };
-
-  const addUser = () => {
-    setActivePlayer(username);
+const CreateUserForm = ({ hasUsername, setHasUsername }: hasUsername) => {
+  const [username, setUsername] = useState(
+    parseLocalStorage(getFromLocalStorage("Username_Getarow"))
+  );
+  const handleSubmit = () => {
+    saveToLocalStorage("Username_Getarow", username);
+    setHasUsername(true);
   };
 
   return (
     <>
-      <input
-        type="text"
-        placeholder="Enter your name"
-        value={username}
-        onChange={handleChange}
-      />
-      <button onClick={addUser}>Add user</button>
+      <form onSubmit={handleSubmit}>
+        <input
+          id="username"
+          type="text"
+          name="username"
+          autoComplete="off"
+          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Enter your name..."
+          required
+        />
+        <button type="submit">Add name</button>
+      </form>
     </>
   );
 };
