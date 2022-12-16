@@ -1,17 +1,14 @@
-import { useState } from "react";
-import { hasUsername } from "../interfaces";
-import {
-  getFromLocalStorage,
-  parseLocalStorage,
-  saveToLocalStorage,
-} from "../utils/localStorage";
+import { IUsername } from "../interfaces";
+import { saveToLocalStorage } from "../utils/localStorage";
 
-const CreateUserForm = ({ hasUsername, setHasUsername }: hasUsername) => {
-  const [username, setUsername] = useState(
-    parseLocalStorage(getFromLocalStorage("Username_Getarow"))
-  );
-  const handleSubmit = () => {
-    saveToLocalStorage("Username_Getarow", username);
+const CreateUserForm = ({
+  username,
+  setUsername,
+  setHasUsername,
+}: IUsername) => {
+  const handleSubmit = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    saveToLocalStorage("Username_Getarow", username ?? "");
     setHasUsername(true);
   };
 
@@ -23,7 +20,7 @@ const CreateUserForm = ({ hasUsername, setHasUsername }: hasUsername) => {
           type="text"
           name="username"
           autoComplete="off"
-          onChange={(e) => setUsername(e.target.value)}
+          onChange={(e) => setUsername?.(e.target.value)}
           placeholder="Enter your name..."
           required
         />

@@ -1,14 +1,22 @@
-import { hasUsername } from "../interfaces";
+import { IStartGame } from "../interfaces";
 import {
   getFromLocalStorage,
   parseLocalStorage,
   saveToLocalStorage,
 } from "../utils/localStorage";
 
-function StartGameComponent({ hasUsername, setHasUsername }: hasUsername) {
+function StartGameComponent({
+  setHasUsername,
+  setHasOngoingGame,
+  hasOngoingGame,
+}: IStartGame) {
   const changeNameFn = () => {
     saveToLocalStorage("Username_Getarow", "");
     setHasUsername(false);
+  };
+
+  const startGame = () => {
+    setHasOngoingGame(true);
   };
 
   const currentPlayer = parseLocalStorage(
@@ -19,7 +27,7 @@ function StartGameComponent({ hasUsername, setHasUsername }: hasUsername) {
     <>
       <h2>Welome {currentPlayer}</h2>
       <button onClick={changeNameFn}>Change name</button>
-      <button>Let's Play</button>
+      <button onClick={startGame}>Let's Play</button>
     </>
   );
 }
