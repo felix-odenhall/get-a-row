@@ -17,6 +17,15 @@ function GameBoard() {
     setLastCompletedTask: state.setLastCompletedTask,
   }));
 
+  const shuffle = ([...arr]) => {
+    let m = arr.length;
+    while (m) {
+      const i = Math.floor(Math.random() * m--);
+      [arr[m], arr[i]] = [arr[i], arr[m]];
+    }
+    return arr;
+  };
+
   const bingoBoard = bingoTasks.slice(0, 9);
 
   function handleClick(item: { id: number }) {
