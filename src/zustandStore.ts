@@ -17,6 +17,10 @@ interface UserState {
   setHasOngoingGame: (hasOngoingGame: boolean) => void;
   bingoTasks: BingoData[];
   setBingoTasks: (bingoTasks: BingoData[]) => void;
+  hasBingo: boolean;
+  setHasBingo: (bingoValue: boolean) => void;
+  lastCompletedTask: string;
+  setLastCompletedTask: (lastCompletedTask: string) => void;
 }
 
 const useStore = create<UserState>()(
@@ -34,8 +38,12 @@ const useStore = create<UserState>()(
         hasOngoingGame: false,
         setHasOngoingGame: (hasOngoingGame) => set(() => ({ hasOngoingGame })),
         bingoTasks: fifaDataObj,
-        setBingoTasks: (khghjgh) =>
-          set((state) => ({ bingoTasks: state.bingoTasks })),
+        setBingoTasks: () => set((state) => ({ bingoTasks: state.bingoTasks })),
+        hasBingo: false,
+        setHasBingo: (hasBingo) => set(() => ({ hasBingo })),
+        lastCompletedTask: "",
+        setLastCompletedTask: (lastCompletedTask) =>
+          set(() => ({ lastCompletedTask })),
       }),
       {
         name: "Get_A_Row_User",
