@@ -1,7 +1,18 @@
+import useStore from "../zustandStore";
+
 function GameBoard() {
+  // { bingoTasks }: IGameBoard
+  const { username, bingoTasks } = useStore((state) => ({
+    username: state.username,
+    bingoTasks: state.bingoTasks,
+  }));
+
   return (
     <>
-      <h1>Hello</h1>
+      <h2>{username}'s Game board</h2>
+      {bingoTasks.map((item) => {
+        return <button key={item.id}>{item.task}</button>;
+      })}
     </>
   );
 }

@@ -1,15 +1,16 @@
-import { IStartGame } from "../interfaces";
 import {
   getFromLocalStorage,
   parseLocalStorage,
   saveToLocalStorage,
 } from "../utils/localStorage";
+import useStore from "../zustandStore";
 
-function StartGameComponent({
-  setHasUsername,
-  setHasOngoingGame,
-  hasOngoingGame,
-}: IStartGame) {
+function StartGameComponent() {
+  const { setHasUsername, setHasOngoingGame } = useStore((state) => ({
+    setHasUsername: state.setHasUsername,
+    setHasOngoingGame: state.setHasOngoingGame,
+  }));
+
   const changeNameFn = () => {
     saveToLocalStorage("Username_Getarow", "");
     setHasUsername(false);

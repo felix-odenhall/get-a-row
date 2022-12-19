@@ -3,35 +3,30 @@ import CreateUserForm from "../components/CreateUserForm";
 import GameBoard from "../components/GameBoard";
 import StartGameComponent from "../components/StartGameComponent";
 import { getFromLocalStorage, parseLocalStorage } from "../utils/localStorage";
+import { BingoData } from "../interfaces";
+import { fifaDataObj } from "../fifaData";
+import useStore from "../zustandStore";
 
 function Home() {
-  const [hasUsername, setHasUsername] = useState(false);
-  const [username, setUsername] = useState(
-    parseLocalStorage(getFromLocalStorage("Username_Getarow"))
-  );
-  const [hasOngoingGame, setHasOngoingGame] = useState(false);
+  // const [bingoTasks, setBingoTasks] = useState<BingoData[]>([...fifaDataObj]);
+
+  const { hasUsername, hasOngoingGame } = useStore((state) => ({
+    username: state.username,
+    hasUsername: state.hasUsername,
+    hasOngoingGame: state.hasOngoingGame,
+  }));
 
   if (hasUsername) {
     if (!hasOngoingGame) {
+      return <StartGameComponent />;
+    } else {
       return (
-        <StartGameComponent
-          setHasUsername={setHasUsername}
-          hasOngoingGame={hasOngoingGame}
-          setHasOngoingGame={setHasOngoingGame}
+        <GameBoard
+        // bingoTasks={bingoTasks}
         />
       );
-    } else {
-      return <GameBoard />;
     }
-  } else
-    return (
-      <CreateUserForm
-        username={username}
-        setUsername={setUsername}
-        hasUsername={hasUsername}
-        setHasUsername={setHasUsername}
-      />
-    );
+  } else return <CreateUserForm />;
 }
 
 export default Home;

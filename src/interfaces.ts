@@ -1,7 +1,7 @@
 export interface IUsername {
   hasUsername: boolean;
   setHasUsername: (hasUsername: boolean) => void;
-  username?: string;
+  username: string;
   setUsername?: (username: string) => void;
 }
 
@@ -12,8 +12,18 @@ export interface IStartGame {
 }
 
 export interface IhasOngoingGame {
-  username?: string;
+  username: string;
   hasUsername: boolean;
   hasOngoingGame: boolean;
   setHasOngoingGame: (hasOngoingGame: boolean) => void;
+}
+
+export interface BingoData {
+  id: number;
+  task: string;
+  isComplete: boolean;
+}
+
+export interface IGameBoard {
+  bingoTasks: BingoData[];
 }
