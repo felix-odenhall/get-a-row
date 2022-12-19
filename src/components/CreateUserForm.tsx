@@ -1,21 +1,17 @@
-import { saveToLocalStorage } from "../utils/localStorage";
 import useStore from "../zustandStore";
 
 const CreateUserForm = () => {
-  const { username, setUsername, hasUsername, setHasUsername } = useStore(
-    (state) => ({
-      username: state.username,
-      setUsername: state.setUsername,
-      hasUsername: state.hasUsername,
-      setHasUsername: state.setHasUsername,
-    })
-  );
+  const { username, setUsername, setHasUsername } = useStore((state) => ({
+    username: state.username,
+    setUsername: state.setUsername,
+    hasUsername: state.hasUsername,
+    setHasUsername: state.setHasUsername,
+  }));
 
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    saveToLocalStorage("Username_Getarow", username ?? "");
+    setUsername(username);
     setHasUsername(true);
-    console.log(hasUsername);
   };
 
   return (

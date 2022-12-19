@@ -1,7 +1,6 @@
 import useStore from "../zustandStore";
 
 function GameBoard() {
-  // { bingoTasks }: IGameBoard
   const { username, bingoTasks } = useStore((state) => ({
     username: state.username,
     bingoTasks: state.bingoTasks,
@@ -10,7 +9,7 @@ function GameBoard() {
   return (
     <>
       <h2>{username}'s Game board</h2>
-      {bingoTasks.map((item) => {
+      {bingoTasks.slice(0, 9).map((item) => {
         return <button key={item.id}>{item.task}</button>;
       })}
     </>

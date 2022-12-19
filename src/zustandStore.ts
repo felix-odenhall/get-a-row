@@ -1,7 +1,6 @@
 import create from "zustand";
 import { devtools, persist } from "zustand/middleware";
 import { fifaDataObj } from "./fifaData";
-import { getFromLocalStorage, parseLocalStorage } from "./utils/localStorage";
 
 interface BingoData {
   id: number;
@@ -19,24 +18,36 @@ interface UserState {
   bingoTasks: BingoData[];
   setBingoTasks: (bingoTasks: BingoData[]) => void;
 }
+
 const useStore = create<UserState>()(
   devtools(
-    persist((set) => ({
-      username: parseLocalStorage(getFromLocalStorage("Username_Getarow")),
-      setUsername: (username) =>
-        set((state) => ({
-          ...state,
-          username,
-        })),
-      hasUsername: false,
-      setHasUsername: (hasUsername) => set(() => ({ hasUsername })),
-      hasOngoingGame: false,
-      setHasOngoingGame: (hasOngoingGame) => set(() => ({ hasOngoingGame })),
-      bingoTasks: fifaDataObj,
-      setBingoTasks: (khghjgh) =>
-        set((state) => ({ bingoTasks: state.bingoTasks })),
-    }))
+    persist(
+      (set) => ({
+        username: "",
+        setUsername: (username) =>
+          set((state) => ({
+            ...state,
+            username,
+          })),
+        hasUsername: false,
+        setHasUsername: (hasUsername) => set(() => ({ hasUsername })),
+        hasOngoingGame: false,
+        setHasOngoingGame: (hasOngoingGame) => set(() => ({ hasOngoingGame })),
+        bingoTasks: fifaDataObj,
+        setBingoTasks: (khghjgh) =>
+          set((state) => ({ bingoTasks: state.bingoTasks })),
+      }),
+      {
+        name: "Get_A_Row_User",
+      }
+    )
   )
 );
+
+// useStore.persist.setOptions({
+//   name: "Get_A_Row_User",
+// });
+// // // to rehydrate the zustand store using the new name
+// useStore.persist.rehydrate();
 
 export default useStore;
