@@ -82,6 +82,10 @@ function GameBoard() {
   const restartFn = () => {
     setHasBingo(false);
     setLastCompletedTask("");
+    bingoBoard.map((item) => {
+      item.isComplete = false;
+      return item;
+    });
   };
 
   return (
@@ -103,7 +107,7 @@ function GameBoard() {
       )}
 
       <div>
-        <button onClick={() => restartFn()}>Hello</button>
+        <button onClick={() => restartFn()}>Restart</button>
       </div>
     </>
   );
