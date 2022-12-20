@@ -2,6 +2,15 @@ import create from "zustand";
 import { devtools, persist } from "zustand/middleware";
 import { fifaDataObj } from "./fifaData";
 
+const shuffle = ([...arr]): BingoData[] => {
+  let m = arr.length;
+  while (m) {
+    const i = Math.floor(Math.random() * m--);
+    [arr[m], arr[i]] = [arr[i], arr[m]];
+  }
+  return arr;
+};
+
 interface BingoData {
   id: number;
   task: string;
@@ -21,6 +30,7 @@ interface UserState {
   setHasBingo: (bingoValue: boolean) => void;
   lastCompletedTask: string;
   setLastCompletedTask: (lastCompletedTask: string) => void;
+  shuffleArr: (bingoTasks: BingoData[]) => BingoData[];
 }
 
 const useStore = create<UserState>()(
@@ -38,12 +48,17 @@ const useStore = create<UserState>()(
         hasOngoingGame: false,
         setHasOngoingGame: (hasOngoingGame) => set(() => ({ hasOngoingGame })),
         bingoTasks: fifaDataObj,
-        setBingoTasks: () => set((state) => ({ bingoTasks: state.bingoTasks })),
+        setBingoTasks: (bingoTasks) =>
+          set((state) => ({
+            ...state,
+            bingoTasks,
+          })),
         hasBingo: false,
         setHasBingo: (hasBingo) => set(() => ({ hasBingo })),
         lastCompletedTask: "",
         setLastCompletedTask: (lastCompletedTask) =>
           set(() => ({ lastCompletedTask })),
+        shuffleArr: (bingoTasks) => shuffle(bingoTasks.slice(0, 9)),
       }),
       {
         name: "Get_A_Row_User",
@@ -51,11 +66,5 @@ const useStore = create<UserState>()(
     )
   )
 );
-
-// useStore.persist.setOptions({
-//   name: "Get_A_Row_User",
-// });
-// // // to rehydrate the zustand store using the new name
-// useStore.persist.rehydrate();
 
 export default useStore;

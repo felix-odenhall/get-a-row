@@ -1,14 +1,23 @@
 import useStore from "../zustandStore";
 
 function StartGameComponent() {
-  const { setHasUsername, setHasOngoingGame, username, setUsername } = useStore(
-    (state) => ({
-      username: state.username,
-      setUsername: state.setUsername,
-      setHasUsername: state.setHasUsername,
-      setHasOngoingGame: state.setHasOngoingGame,
-    })
-  );
+  const {
+    setHasUsername,
+    setHasOngoingGame,
+    username,
+    setUsername,
+    bingoTasks,
+    setBingoTasks,
+    shuffleArr,
+  } = useStore((state) => ({
+    username: state.username,
+    setUsername: state.setUsername,
+    setHasUsername: state.setHasUsername,
+    setHasOngoingGame: state.setHasOngoingGame,
+    bingoTasks: state.bingoTasks,
+    setBingoTasks: state.setBingoTasks,
+    shuffleArr: state.shuffleArr,
+  }));
 
   const changeNameFn = () => {
     setUsername("");
@@ -17,6 +26,7 @@ function StartGameComponent() {
 
   const startGame = () => {
     setHasOngoingGame(true);
+    setBingoTasks(shuffleArr(bingoTasks));
   };
 
   return (
