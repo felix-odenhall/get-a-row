@@ -1,4 +1,6 @@
-import useStore from "../zustandStore";
+import { useState } from "react";
+import useStore, { BingoData } from "../zustandStore";
+import DropDownList from "./DropDownList";
 
 function GameBoard() {
   const {
@@ -20,6 +22,8 @@ function GameBoard() {
     setBingoTasks: state.setBingoTasks,
     shuffleArr: state.shuffleArr,
   }));
+
+  const [tasks, setTasks] = useState<BingoData[]>([]);
 
   const bingoBoard = bingoTasks.slice(0, 9);
 
@@ -103,7 +107,11 @@ function GameBoard() {
   return (
     <>
       <h2>{username}'s Game board</h2>
-      <h3>
+      <DropDownList setTasks={setTasks} tasks={tasks} />
+      {tasks.map((task) => {
+        return <p>{task.task}</p>;
+      })}
+      {/* <h3>
         {lastCompletedTask === "" ? (
           ""
         ) : (
@@ -126,7 +134,7 @@ function GameBoard() {
 
       <div>
         <button onClick={() => restartFn()}>Restart</button>
-      </div>
+      </div> */}
     </>
   );
 }

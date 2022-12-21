@@ -11,7 +11,7 @@ const shuffle = ([...arr]): BingoData[] => {
   return arr;
 };
 
-interface BingoData {
+export interface BingoData {
   id: number;
   task: string;
   isComplete: boolean;
@@ -31,6 +31,10 @@ interface UserState {
   lastCompletedTask: string;
   setLastCompletedTask: (lastCompletedTask: string) => void;
   shuffleArr: (bingoTasks: BingoData[]) => BingoData[];
+  isOpen: boolean;
+  setIsOpen: (openDropDown: boolean) => void;
+  // pickedTasks: BingoData[];
+  // setPickedTasks: (pickedTask: BingoData) => void;
 }
 
 const useStore = create<UserState>()(
@@ -59,6 +63,10 @@ const useStore = create<UserState>()(
         setLastCompletedTask: (lastCompletedTask) =>
           set(() => ({ lastCompletedTask })),
         shuffleArr: (bingoTasks) => shuffle(bingoTasks.slice(0, 9)),
+        isOpen: false,
+        setIsOpen: () => set((state) => ({ isOpen: !state.isOpen })),
+        // pickedTasks: [],
+        // setPickedTasks: (pickedTasks)  => set( { [...pickedTasks, pickedTask]} )
       }),
       {
         name: "Get_A_Row_User",
