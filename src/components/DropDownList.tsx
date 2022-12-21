@@ -5,15 +5,24 @@ interface IDropDownListProps {
   setTasks: (tasks: BingoData[]) => void;
 }
 
-const DropDownList = ({ setTasks, tasks }: IDropDownListProps) => {
-  const { bingoTasks, isOpen, setIsOpen } = useStore((state) => ({
-    bingoTasks: state.bingoTasks,
-    isOpen: state.isOpen,
-    setIsOpen: state.setIsOpen,
-  }));
+const DropDownList = () => {
+  const { bingoTasks, isOpen, setIsOpen, pickedTasks, setPickedTasks } =
+    useStore((state) => ({
+      bingoTasks: state.bingoTasks,
+      isOpen: state.isOpen,
+      setIsOpen: state.setIsOpen,
+      pickedTasks: state.pickedTasks,
+      setPickedTasks: state.setPickedTasks,
+    }));
 
   const handleClick = (item: BingoData) => {
-    setTasks([...tasks, item]);
+    if (!pickedTasks.includes(item)) {
+      setPickedTasks([...pickedTasks, item]);
+      console.log(item.id);
+      console.log(pickedTasks);
+    } else {
+      setPickedTasks(pickedTasks.filter((e) => e !== item));
+    }
   };
 
   const itemsList = bingoTasks.map((item) => {

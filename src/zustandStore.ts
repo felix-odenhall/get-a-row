@@ -33,8 +33,8 @@ interface UserState {
   shuffleArr: (bingoTasks: BingoData[]) => BingoData[];
   isOpen: boolean;
   setIsOpen: (openDropDown: boolean) => void;
-  // pickedTasks: BingoData[];
-  // setPickedTasks: (pickedTask: BingoData) => void;
+  pickedTasks: BingoData[];
+  setPickedTasks: (pickedTask: BingoData[]) => void;
 }
 
 const useStore = create<UserState>()(
@@ -62,11 +62,12 @@ const useStore = create<UserState>()(
         lastCompletedTask: "",
         setLastCompletedTask: (lastCompletedTask) =>
           set(() => ({ lastCompletedTask })),
-        shuffleArr: (bingoTasks) => shuffle(bingoTasks.slice(0, 9)),
+        shuffleArr: (bingoTasks) => shuffle(bingoTasks),
         isOpen: false,
         setIsOpen: () => set((state) => ({ isOpen: !state.isOpen })),
-        // pickedTasks: [],
-        // setPickedTasks: (pickedTasks)  => set( { [...pickedTasks, pickedTask]} )
+        pickedTasks: [],
+        setPickedTasks: (pickedTasks) =>
+          set((state) => ({ ...state, pickedTasks })),
       }),
       {
         name: "Get_A_Row_User",

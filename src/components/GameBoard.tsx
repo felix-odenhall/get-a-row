@@ -1,3 +1,4 @@
+import { stat } from "fs";
 import { useState } from "react";
 import useStore, { BingoData } from "../zustandStore";
 import DropDownList from "./DropDownList";
@@ -12,6 +13,8 @@ function GameBoard() {
     setLastCompletedTask,
     setBingoTasks,
     shuffleArr,
+    pickedTasks,
+    setPickedTasks,
   } = useStore((state) => ({
     username: state.username,
     bingoTasks: state.bingoTasks,
@@ -21,9 +24,9 @@ function GameBoard() {
     setLastCompletedTask: state.setLastCompletedTask,
     setBingoTasks: state.setBingoTasks,
     shuffleArr: state.shuffleArr,
+    pickedTasks: state.pickedTasks,
+    setPickedTasks: state.setPickedTasks,
   }));
-
-  const [tasks, setTasks] = useState<BingoData[]>([]);
 
   const bingoBoard = bingoTasks.slice(0, 9);
 
@@ -107,9 +110,21 @@ function GameBoard() {
   return (
     <>
       <h2>{username}'s Game board</h2>
-      <DropDownList setTasks={setTasks} tasks={tasks} />
-      {tasks.map((task) => {
-        return <p>{task.task}</p>;
+      <p>You have picked {pickedTasks.length} tasks</p>
+      <DropDownList />
+      {pickedTasks.map((task) => {
+        return (
+          <div key={task.id}>
+            <span>{task.task}</span>
+            <button
+              onClick={() =>
+                setPickedTasks(pickedTasks.filter((e) => e !== task))
+              }
+            >
+              -
+            </button>
+          </div>
+        );
       })}
       {/* <h3>
         {lastCompletedTask === "" ? (
