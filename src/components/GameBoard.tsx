@@ -2,7 +2,7 @@ import { useState } from "react";
 import { lines3x3 } from "../utils/gameBoards";
 import { calculateWinner } from "../utils/winningCondition";
 import useStore, { BingoData } from "../zustandStore";
-import DropDownList from "./DropDownList";
+import SelectTasks from "./SelectTasks";
 
 function GameBoard() {
   const {
@@ -29,7 +29,7 @@ function GameBoard() {
     setPickedTasks: state.setPickedTasks,
   }));
 
-  const bingoBoard = bingoTasks.slice(0, 9);
+  const bingoBoard = pickedTasks;
   const [boardSize, setBoardSize] = useState(lines3x3);
 
   const handleClick = (item: { id: number }) => {
@@ -48,6 +48,30 @@ function GameBoard() {
     });
   };
 
+  // pickedTasks.map((item) => {
+  //   return (
+  //     <>
+  //       <button key={item.id} onClick={() => handleClick(item)}>
+  //         {item.task}
+  //       </button>
+  //     </>
+  //   );
+  // });
+
+  const canPlay = () => {
+    if (pickedTasks.length === 9) {
+      return <button>Start Game</button>;
+    } else {
+      return (
+        <h1>
+          {pickedTasks.length === 0
+            ? "Select 9 tasks"
+            : `select ${9 - pickedTasks.length} more tasks`}
+        </h1>
+      );
+    }
+  };
+
   const restartFn = () => {
     setHasBingo(false);
     setLastCompletedTask("");
@@ -64,21 +88,7 @@ function GameBoard() {
       {pickedTasks.length <= 9 && pickedTasks.length > 0 && (
         <p>You have picked {pickedTasks.length} tasks</p>
       )}
-      <DropDownList />
-      {pickedTasks.map((task) => {
-        return (
-          <div key={task.id}>
-            {task.task}
-            <button
-              onClick={() =>
-                setPickedTasks(pickedTasks.filter((e) => e !== task))
-              }
-            >
-              -
-            </button>
-          </div>
-        );
-      })}
+      {<SelectTasks />}
       <h3>
         {lastCompletedTask === "" ? (
           ""
@@ -88,17 +98,7 @@ function GameBoard() {
           </p>
         )}
       </h3>
-      {hasBingo ? (
-        <h1>BINGO</h1>
-      ) : (
-        bingoBoard.map((item) => {
-          return (
-            <button key={item.id} onClick={() => handleClick(item)}>
-              {item.task}
-            </button>
-          );
-        })
-      )}
+      {hasBingo ? <h1>BINGO</h1> : canPlay()}
 
       <div>
         <button onClick={() => restartFn()}>Restart</button>

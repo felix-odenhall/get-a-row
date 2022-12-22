@@ -33,6 +33,22 @@ const DropDownList = () => {
     <>
       <button onClick={openDropdown}>Select options</button>
       {isOpen ? <div>{itemsList}</div> : ""}
+      {pickedTasks.length <= 9 &&
+        pickedTasks.length > 0 &&
+        pickedTasks.map((task) => {
+          return (
+            <div key={task.id}>
+              {task.task}
+              <button
+                onClick={() =>
+                  setPickedTasks(pickedTasks.filter((e) => e !== task))
+                }
+              >
+                -
+              </button>
+            </div>
+          );
+        })}
     </>
   );
 };
