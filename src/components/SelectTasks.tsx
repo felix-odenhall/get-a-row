@@ -31,7 +31,7 @@ const DropDownList = () => {
 
   return (
     <>
-      <button onClick={openDropdown}>Select options</button>
+      <button onClick={openDropdown}>Select Tasks To Complete</button>
       {isOpen ? <div>{itemsList}</div> : ""}
       {pickedTasks.length <= 9 &&
         pickedTasks.length > 0 &&

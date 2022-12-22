@@ -61,14 +61,6 @@ function GameBoard() {
   const canPlay = () => {
     if (pickedTasks.length === 9) {
       return <button>Start Game</button>;
-    } else {
-      return (
-        <h1>
-          {pickedTasks.length === 0
-            ? "Select 9 tasks"
-            : `select ${9 - pickedTasks.length} more tasks`}
-        </h1>
-      );
     }
   };
 
@@ -85,8 +77,12 @@ function GameBoard() {
   return (
     <>
       <h2>{username}'s Game board</h2>
-      {pickedTasks.length <= 9 && pickedTasks.length > 0 && (
-        <p>You have picked {pickedTasks.length} tasks</p>
+      {pickedTasks.length <= 9 && (
+        <p>
+          {pickedTasks.length === 0
+            ? "Select 9 tasks"
+            : `Select ${9 - pickedTasks.length} more tasks`}
+        </p>
       )}
       {<SelectTasks />}
       <h3>
