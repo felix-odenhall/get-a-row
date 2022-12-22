@@ -1,10 +1,5 @@
 import useStore, { BingoData } from "../zustandStore";
 
-interface IDropDownListProps {
-  tasks: BingoData[];
-  setTasks: (tasks: BingoData[]) => void;
-}
-
 const DropDownList = () => {
   const { bingoTasks, isOpen, setIsOpen, pickedTasks, setPickedTasks } =
     useStore((state) => ({
@@ -16,13 +11,9 @@ const DropDownList = () => {
     }));
 
   const handleClick = (item: BingoData) => {
-    if (!pickedTasks.includes(item)) {
-      setPickedTasks([...pickedTasks, item]);
-      console.log(item.id);
-      console.log(pickedTasks);
-    } else {
-      setPickedTasks(pickedTasks.filter((e) => e !== item));
-    }
+    pickedTasks.length < 9 && !pickedTasks.includes(item)
+      ? setPickedTasks([...pickedTasks, item])
+      : setPickedTasks(pickedTasks.filter((e) => e !== item));
   };
 
   const itemsList = bingoTasks.map((item) => {

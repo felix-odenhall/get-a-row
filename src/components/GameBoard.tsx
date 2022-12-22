@@ -1,5 +1,6 @@
-import { stat } from "fs";
 import { useState } from "react";
+import { lines3x3 } from "../utils/gameBoards";
+import { calculateWinner } from "../utils/winningCondition";
 import useStore, { BingoData } from "../zustandStore";
 import DropDownList from "./DropDownList";
 
@@ -29,73 +30,23 @@ function GameBoard() {
   }));
 
   const bingoBoard = bingoTasks.slice(0, 9);
+  const [boardSize, setBoardSize] = useState(lines3x3);
 
-  function handleClick(item: { id: number }) {
+  const handleClick = (item: { id: number }) => {
     bingoBoard.map((task) => {
       if (task.id === item.id) {
         task.isComplete = !task.isComplete;
         setLastCompletedTask(task.task);
       }
-      if (
-        bingoBoard[0].isComplete &&
-        bingoBoard[1].isComplete &&
-        bingoBoard[2].isComplete
-      ) {
-        setHasBingo(true);
-        setLastCompletedTask("");
-      } else if (
-        bingoBoard[3].isComplete &&
-        bingoBoard[4].isComplete &&
-        bingoBoard[5].isComplete
-      ) {
-        setHasBingo(true);
-        setLastCompletedTask("");
-      } else if (
-        bingoBoard[6].isComplete &&
-        bingoBoard[7].isComplete &&
-        bingoBoard[8].isComplete
-      ) {
-        setHasBingo(true);
-        setLastCompletedTask("");
-      } else if (
-        bingoBoard[0].isComplete &&
-        bingoBoard[3].isComplete &&
-        bingoBoard[6].isComplete
-      ) {
-        setHasBingo(true);
-        setLastCompletedTask("");
-      } else if (
-        bingoBoard[1].isComplete &&
-        bingoBoard[4].isComplete &&
-        bingoBoard[7].isComplete
-      ) {
-        setHasBingo(true);
-        setLastCompletedTask("");
-      } else if (
-        bingoBoard[2].isComplete &&
-        bingoBoard[5].isComplete &&
-        bingoBoard[8].isComplete
-      ) {
-        setHasBingo(true);
-        setLastCompletedTask("");
-      } else if (
-        bingoBoard[0].isComplete &&
-        bingoBoard[4].isComplete &&
-        bingoBoard[8].isComplete
-      ) {
-        setHasBingo(true);
-        setLastCompletedTask("");
-      } else if (
-        bingoBoard[2].isComplete &&
-        bingoBoard[4].isComplete &&
-        bingoBoard[6].isComplete
-      ) {
+      const result = calculateWinner(bingoBoard, boardSize);
+      if (result) {
         setHasBingo(true);
         setLastCompletedTask("");
       }
+
       return task;
     });
-  }
+  };
 
   const restartFn = () => {
     setHasBingo(false);
@@ -110,12 +61,14 @@ function GameBoard() {
   return (
     <>
       <h2>{username}'s Game board</h2>
-      <p>You have picked {pickedTasks.length} tasks</p>
+      {pickedTasks.length <= 9 && pickedTasks.length > 0 && (
+        <p>You have picked {pickedTasks.length} tasks</p>
+      )}
       <DropDownList />
       {pickedTasks.map((task) => {
         return (
           <div key={task.id}>
-            <span>{task.task}</span>
+            {task.task}
             <button
               onClick={() =>
                 setPickedTasks(pickedTasks.filter((e) => e !== task))
@@ -126,7 +79,7 @@ function GameBoard() {
           </div>
         );
       })}
-      {/* <h3>
+      <h3>
         {lastCompletedTask === "" ? (
           ""
         ) : (
@@ -149,7 +102,7 @@ function GameBoard() {
 
       <div>
         <button onClick={() => restartFn()}>Restart</button>
-      </div> */}
+      </div>
     </>
   );
 }
