@@ -1,44 +1,41 @@
 import { useState } from "react";
 import { lines3x3 } from "../utils/gameBoards";
 import { calculateWinner } from "../utils/winningCondition";
-import useStore, { BingoData } from "../zustandStore";
-import SelectTasks from "./SelectTasks";
+import useStore from "../zustandStore";
 
 function GameBoard() {
   const {
     username,
-    bingoTasks,
     hasBingo,
     setHasBingo,
     lastCompletedTask,
     setLastCompletedTask,
-    setBingoTasks,
     shuffleArr,
     pickedTasks,
     setPickedTasks,
+    setHasOngoingGame,
   } = useStore((state) => ({
     username: state.username,
-    bingoTasks: state.bingoTasks,
     hasBingo: state.hasBingo,
     setHasBingo: state.setHasBingo,
     lastCompletedTask: state.lastCompletedTask,
     setLastCompletedTask: state.setLastCompletedTask,
-    setBingoTasks: state.setBingoTasks,
     shuffleArr: state.shuffleArr,
     pickedTasks: state.pickedTasks,
     setPickedTasks: state.setPickedTasks,
+    setHasOngoingGame: state.setHasOngoingGame,
   }));
 
-  const bingoBoard = pickedTasks;
+  // const bingoBoard = pickedTasks;
   const [boardSize, setBoardSize] = useState(lines3x3);
 
   const handleClick = (item: { id: number }) => {
-    bingoBoard.map((task) => {
+    pickedTasks.map((task) => {
       if (task.id === item.id) {
         task.isComplete = !task.isComplete;
         setLastCompletedTask(task.task);
       }
-      const result = calculateWinner(bingoBoard, boardSize);
+      const result = calculateWinner(pickedTasks, boardSize);
       if (result) {
         setHasBingo(true);
         setLastCompletedTask("");
@@ -48,43 +45,39 @@ function GameBoard() {
     });
   };
 
-  // pickedTasks.map((item) => {
-  //   return (
-  //     <>
-  //       <button key={item.id} onClick={() => handleClick(item)}>
-  //         {item.task}
-  //       </button>
-  //     </>
-  //   );
-  // });
-
-  const canPlay = () => {
+  const canPlayFn = () => {
     if (pickedTasks.length === 9) {
-      return <button>Start Game</button>;
+      return pickedTasks.map((el) => {
+        return (
+          <button key={el.id} onClick={() => handleClick(el)}>
+            {el.task}
+          </button>
+        );
+      });
     }
+  };
+
+  const canPlay = canPlayFn();
+
+  const pickNewTasks = () => {
+    setHasOngoingGame(false);
+    setPickedTasks([]);
   };
 
   const restartFn = () => {
     setHasBingo(false);
     setLastCompletedTask("");
-    bingoBoard.map((item) => {
+    pickedTasks.map((item) => {
       item.isComplete = false;
       return item;
     });
-    setBingoTasks(shuffleArr(bingoTasks));
+    setPickedTasks(shuffleArr(pickedTasks));
   };
 
   return (
     <>
       <h2>{username}'s Game board</h2>
-      {pickedTasks.length <= 9 && (
-        <p>
-          {pickedTasks.length === 0
-            ? "Select 9 tasks"
-            : `Select ${9 - pickedTasks.length} more tasks`}
-        </p>
-      )}
-      {<SelectTasks />}
+      <button onClick={() => pickNewTasks()}>Pick new tasks</button>
       <h3>
         {lastCompletedTask === "" ? (
           ""
@@ -94,11 +87,13 @@ function GameBoard() {
           </p>
         )}
       </h3>
-      {hasBingo ? <h1>BINGO</h1> : canPlay()}
+      {hasBingo ? <h1>BINGO</h1> : canPlay}
 
-      <div>
-        <button onClick={() => restartFn()}>Restart</button>
-      </div>
+      {hasBingo && (
+        <div>
+          <button onClick={() => restartFn()}>Restart</button>
+        </div>
+      )}
     </>
   );
 }

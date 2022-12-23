@@ -1,14 +1,11 @@
 import useStore, { BingoData } from "../zustandStore";
 
 const DropDownList = () => {
-  const { bingoTasks, isOpen, setIsOpen, pickedTasks, setPickedTasks } =
-    useStore((state) => ({
-      bingoTasks: state.bingoTasks,
-      isOpen: state.isOpen,
-      setIsOpen: state.setIsOpen,
-      pickedTasks: state.pickedTasks,
-      setPickedTasks: state.setPickedTasks,
-    }));
+  const { bingoTasks, pickedTasks, setPickedTasks } = useStore((state) => ({
+    bingoTasks: state.bingoTasks,
+    pickedTasks: state.pickedTasks,
+    setPickedTasks: state.setPickedTasks,
+  }));
 
   const handleClick = (item: BingoData) => {
     pickedTasks.length < 9 && !pickedTasks.includes(item)
@@ -24,15 +21,9 @@ const DropDownList = () => {
     );
   });
 
-  const openDropdown = () => {
-    setIsOpen(isOpen);
-    console.log(isOpen);
-  };
-
   return (
     <>
-      <button onClick={openDropdown}>Select Tasks To Complete</button>
-      {isOpen ? <div>{itemsList}</div> : ""}
+      {itemsList}
       {pickedTasks.length <= 9 &&
         pickedTasks.length > 0 &&
         pickedTasks.map((task) => {
