@@ -1,3 +1,4 @@
+import { Button, Checkbox, Stack } from "@chakra-ui/react";
 import useStore, { BingoData } from "../zustandStore";
 
 const DropDownList = () => {
@@ -15,16 +16,39 @@ const DropDownList = () => {
 
   const itemsList = bingoTasks.map((item) => {
     return (
-      <button key={item.id} onClick={() => handleClick(item)}>
+      <Button
+        size="sm"
+        colorScheme={pickedTasks.includes(item) ? "green" : "gray"}
+        w="92%"
+        h="9"
+        fontSize="md"
+        boxShadow="base"
+        key={item.id}
+        onClick={() => handleClick(item)}
+      >
         {item.task}
-      </button>
+      </Button>
     );
   });
 
+  // <Stack spacing={[1, 5]} direction={["column", "row"]}>
+  //   <Checkbox size="sm" colorScheme="red">
+  //     Checkbox
+  //   </Checkbox>
+  //   <Checkbox size="md" colorScheme="green" defaultChecked>
+  //     Checkbox
+  //   </Checkbox>
+  //   <Checkbox size="lg" colorScheme="orange" defaultChecked>
+  //     Checkbox
+  //   </Checkbox>
+  // </Stack>;
+
   return (
     <>
-      {itemsList}
-      {pickedTasks.length <= 9 &&
+      <Stack spacing={3} direction="column" align="center">
+        {itemsList}
+      </Stack>
+      {/* {pickedTasks.length <= 9 &&
         pickedTasks.length > 0 &&
         pickedTasks.map((task) => {
           return (
@@ -39,7 +63,7 @@ const DropDownList = () => {
               </button>
             </div>
           );
-        })}
+        })} */}
     </>
   );
 };

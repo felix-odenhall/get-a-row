@@ -21,7 +21,7 @@ export const fifaDataObj = [
   },
   {
     id: 5,
-    task: "Win a game with 65% possession or higher",
+    task: "Score from outisde the box",
     isComplete: false,
   },
   {

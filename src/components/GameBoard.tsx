@@ -1,3 +1,4 @@
+import { Box, Button, Grid, Text, useToast } from "@chakra-ui/react";
 import { useState } from "react";
 import { lines3x3 } from "../utils/gameBoards";
 import { calculateWinner } from "../utils/winningCondition";
@@ -26,13 +27,35 @@ function GameBoard() {
     setHasOngoingGame: state.setHasOngoingGame,
   }));
 
+  <Box w="100%" h="20">
+    {lastCompletedTask !== "" && (
+      <Text color="tomato" fontSize="2xl" fontWeight="bold">
+        {username} just completed the task: {lastCompletedTask}
+      </Text>
+    )}
+  </Box>;
+
   // const bingoBoard = pickedTasks;
   const [boardSize, setBoardSize] = useState(lines3x3);
+  const toast = useToast();
 
   const handleClick = (item: { id: number }) => {
     pickedTasks.map((task) => {
       if (task.id === item.id) {
         task.isComplete = !task.isComplete;
+        task.isComplete &&
+          toast({
+            position: "bottom",
+            duration: 2000,
+            isClosable: true,
+            render: () => (
+              <Box borderRadius="xl" bg="green.400" p="4">
+                <Text color="white" fontSize="xl" fontWeight="bold">
+                  You just completed the task: {task.task}
+                </Text>
+              </Box>
+            ),
+          });
         setLastCompletedTask(task.task);
       }
       const result = calculateWinner(pickedTasks, boardSize);
@@ -49,9 +72,19 @@ function GameBoard() {
     if (pickedTasks.length === 9) {
       return pickedTasks.map((el) => {
         return (
-          <button key={el.id} onClick={() => handleClick(el)}>
+          <Box
+            bg={el.isComplete ? "green.400" : "gray.200"}
+            color={el.isComplete ? "white" : "black"}
+            fontWeight="medium"
+            as="button"
+            h="36"
+            key={el.id}
+            p="1"
+            boxShadow="base"
+            onClick={() => handleClick(el)}
+          >
             {el.task}
-          </button>
+          </Box>
         );
       });
     }
@@ -62,6 +95,7 @@ function GameBoard() {
   const pickNewTasks = () => {
     setHasOngoingGame(false);
     setPickedTasks([]);
+    setLastCompletedTask("");
   };
 
   const restartFn = () => {
@@ -77,22 +111,37 @@ function GameBoard() {
   return (
     <>
       <h2>{username}'s Game board</h2>
-      <button onClick={() => pickNewTasks()}>Pick new tasks</button>
-      <h3>
-        {lastCompletedTask === "" ? (
-          ""
-        ) : (
-          <p>
-            {username} just completed the task: {lastCompletedTask}
-          </p>
-        )}
-      </h3>
-      {hasBingo ? <h1>BINGO</h1> : canPlay}
+      {hasBingo ? (
+        <h1>BINGO</h1>
+      ) : (
+        <Grid
+          w="100%"
+          p="2"
+          templateRows="repeat(3, 1fr)"
+          templateColumns="repeat(3, 1fr)"
+          gap={1.5}
+        >
+          {canPlay}
+        </Grid>
+      )}
 
-      {hasBingo && (
+      {hasBingo ? (
         <div>
           <button onClick={() => restartFn()}>Restart</button>
         </div>
+      ) : (
+        <Button
+          colorScheme="orange"
+          size="md"
+          bgGradient="linear(to-b, orange.400, tomato)"
+          fontWeight="medium"
+          fontSize="lg"
+          onClick={pickNewTasks}
+          boxShadow="base"
+          mb="2"
+        >
+          Pick New Tasks
+        </Button>
       )}
     </>
   );

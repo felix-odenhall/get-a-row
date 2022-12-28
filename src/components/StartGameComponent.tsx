@@ -1,4 +1,5 @@
 import useStore from "../zustandStore";
+import { Box, Button, Text } from "@chakra-ui/react";
 import SelectTasks from "./SelectTasks";
 
 function StartGameComponent() {
@@ -25,15 +26,31 @@ function StartGameComponent() {
 
   const calcAmountOfTasksFn = () => {
     if (pickedTasks.length === 0) {
-      return <p> Select 9 tasks</p>;
+      return (
+        <Text color="tomato" fontSize="2xl" fontWeight="bold">
+          Select 9 Tasks
+        </Text>
+      );
     } else if (pickedTasks.length === 9) {
       return (
-        <div>
-          <button onClick={startGame}>Let's Play</button>
-        </div>
+        <Button
+          colorScheme="orange"
+          size="md"
+          bgGradient="linear(to-b, orange.400, tomato)"
+          fontWeight="bold"
+          fontSize="xl"
+          onClick={startGame}
+          boxShadow="base"
+        >
+          Let's Play
+        </Button>
       );
     } else {
-      return <p>Select {9 - pickedTasks.length} more tasks</p>;
+      return (
+        <Text color="tomato" fontSize="2xl" fontWeight="bold">
+          Select {9 - pickedTasks.length} more tasks
+        </Text>
+      );
     }
   };
 
@@ -41,9 +58,17 @@ function StartGameComponent() {
 
   return (
     <>
-      <h2>Welome {username}</h2>
-      {calcAmountOfTasks}
-
+      <Text
+        bgGradient="linear(to-l, #7928CA, #FF0080)"
+        bgClip="text"
+        fontSize="2rem"
+        fontWeight="bold"
+      >
+        Welome {username}
+      </Text>
+      <Box w="100%" my={2} h="12">
+        {calcAmountOfTasks}
+      </Box>
       <SelectTasks />
     </>
   );
