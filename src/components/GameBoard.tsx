@@ -15,6 +15,7 @@ function GameBoard() {
     pickedTasks,
     setPickedTasks,
     setHasOngoingGame,
+    bingoTasks,
   } = useStore((state) => ({
     username: state.username,
     hasBingo: state.hasBingo,
@@ -25,6 +26,7 @@ function GameBoard() {
     pickedTasks: state.pickedTasks,
     setPickedTasks: state.setPickedTasks,
     setHasOngoingGame: state.setHasOngoingGame,
+    bingoTasks: state.bingoTasks,
   }));
 
   <Box w="100%" h="20">

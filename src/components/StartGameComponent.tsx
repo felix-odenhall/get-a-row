@@ -22,6 +22,10 @@ function StartGameComponent() {
   const startGame = () => {
     setHasOngoingGame(true);
     setBingoTasks(shuffleArr(bingoTasks));
+    pickedTasks.map((item) => {
+      item.isComplete = false;
+      return item;
+    });
   };
 
   const calcAmountOfTasksFn = () => {

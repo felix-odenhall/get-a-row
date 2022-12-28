@@ -20,7 +20,7 @@ const DropDownList = () => {
         size="sm"
         colorScheme={pickedTasks.includes(item) ? "green" : "gray"}
         w="92%"
-        h="9"
+        h="12"
         fontSize="md"
         boxShadow="base"
         key={item.id}
