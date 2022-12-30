@@ -61,20 +61,28 @@ function StartGameComponent() {
   const calcAmountOfTasks = calcAmountOfTasksFn();
 
   return (
-    <>
-      <Text
-        bgGradient="linear(to-l, #7928CA, #FF0080)"
-        bgClip="text"
-        fontSize="2rem"
-        fontWeight="bold"
+    <main>
+      <Box
+        pos="fixed"
+        w="100%"
+        top="0"
+        bg="white"
+        zIndex={2}
+        shadow="base"
+        p="2"
       >
-        Welome {username}
-      </Text>
-      <Box w="100%" my={2} h="12">
-        {calcAmountOfTasks}
+        <Text color="gray.600" fontSize="2rem" fontWeight="bold">
+          Welome {username}
+        </Text>
+
+        <Box w="100%" my={2} py="1">
+          {calcAmountOfTasks}
+        </Box>
       </Box>
-      <SelectTasks />
-    </>
+      <Box pt="36">
+        <SelectTasks />
+      </Box>
+    </main>
   );
 }
 

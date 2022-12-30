@@ -15,7 +15,6 @@ function GameBoard() {
     pickedTasks,
     setPickedTasks,
     setHasOngoingGame,
-    bingoTasks,
   } = useStore((state) => ({
     username: state.username,
     hasBingo: state.hasBingo,
@@ -26,18 +25,8 @@ function GameBoard() {
     pickedTasks: state.pickedTasks,
     setPickedTasks: state.setPickedTasks,
     setHasOngoingGame: state.setHasOngoingGame,
-    bingoTasks: state.bingoTasks,
   }));
 
-  <Box w="100%" h="20">
-    {lastCompletedTask !== "" && (
-      <Text color="tomato" fontSize="2xl" fontWeight="bold">
-        {username} just completed the task: {lastCompletedTask}
-      </Text>
-    )}
-  </Box>;
-
-  // const bingoBoard = pickedTasks;
   const [boardSize, setBoardSize] = useState(lines3x3);
   const toast = useToast();
 
@@ -103,9 +92,9 @@ function GameBoard() {
   const restartFn = () => {
     setHasBingo(false);
     setLastCompletedTask("");
-    pickedTasks.map((item) => {
-      item.isComplete = false;
-      return item;
+    pickedTasks.map((el) => {
+      el.isComplete = false;
+      return el;
     });
     setPickedTasks(shuffleArr(pickedTasks));
   };
