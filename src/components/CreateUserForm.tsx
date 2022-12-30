@@ -4,7 +4,6 @@ const CreateUserForm = () => {
   const { username, setUsername, setHasUsername } = useStore((state) => ({
     username: state.username,
     setUsername: state.setUsername,
-    hasUsername: state.hasUsername,
     setHasUsername: state.setHasUsername,
   }));
 
