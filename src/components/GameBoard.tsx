@@ -108,6 +108,8 @@ function GameBoard() {
         <Grid
           w="100%"
           p="2"
+          maxW="480px"
+          m="auto"
           templateRows="repeat(3, 1fr)"
           templateColumns="repeat(3, 1fr)"
           gap={1.5}
