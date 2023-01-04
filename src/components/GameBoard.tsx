@@ -9,7 +9,6 @@ function GameBoard() {
     username,
     hasBingo,
     setHasBingo,
-    lastCompletedTask,
     setLastCompletedTask,
     shuffleArr,
     pickedTasks,
@@ -19,7 +18,6 @@ function GameBoard() {
     username: state.username,
     hasBingo: state.hasBingo,
     setHasBingo: state.setHasBingo,
-    lastCompletedTask: state.lastCompletedTask,
     setLastCompletedTask: state.setLastCompletedTask,
     shuffleArr: state.shuffleArr,
     pickedTasks: state.pickedTasks,
@@ -37,11 +35,11 @@ function GameBoard() {
         task.isComplete &&
           toast({
             position: "bottom",
-            duration: 2000,
+            duration: 1500,
             isClosable: true,
             render: () => (
               <Box borderRadius="xl" bg="green.400" p="4">
-                <Text color="white" fontSize="xl" fontWeight="bold">
+                <Text color="white" fontSize="md" fontWeight="semibold">
                   You just completed the task: {task.task}
                 </Text>
               </Box>

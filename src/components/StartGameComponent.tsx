@@ -74,7 +74,6 @@ function StartGameComponent() {
         <Text color="gray.600" fontSize="2rem" fontWeight="bold">
           Welome {username}
         </Text>
-
         <Box w="100%" my={2} py="1">
           {calcAmountOfTasks}
         </Box>
