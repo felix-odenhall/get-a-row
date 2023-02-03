@@ -28,38 +28,6 @@ function StartGameComponent() {
     });
   };
 
-  const calcAmountOfTasksFn = () => {
-    if (pickedTasks.length === 0) {
-      return (
-        <Text color="tomato" fontSize="2xl" fontWeight="bold">
-          Select 9 Tasks
-        </Text>
-      );
-    } else if (pickedTasks.length === 9) {
-      return (
-        <Button
-          colorScheme="orange"
-          size="md"
-          bgGradient="linear(to-b, orange.400, tomato)"
-          fontWeight="bold"
-          fontSize="xl"
-          onClick={startGame}
-          boxShadow="base"
-        >
-          Let's Play
-        </Button>
-      );
-    } else {
-      return (
-        <Text color="tomato" fontSize="2xl" fontWeight="bold">
-          Select {9 - pickedTasks.length} more tasks
-        </Text>
-      );
-    }
-  };
-
-  const calcAmountOfTasks = calcAmountOfTasksFn();
-
   return (
     <main>
       <Box
@@ -75,7 +43,29 @@ function StartGameComponent() {
           Welome {username}
         </Text>
         <Box w="100%" my={2} py="1">
-          {calcAmountOfTasks}
+          {pickedTasks.length === 0 && (
+            <Text color="tomato" fontSize="2xl" fontWeight="bold">
+              Select 9 Tasks
+            </Text>
+          )}
+          {pickedTasks.length === 9 && (
+            <Button
+              colorScheme="orange"
+              size="md"
+              bgGradient="linear(to-b, orange.400, tomato)"
+              fontWeight="bold"
+              fontSize="xl"
+              onClick={startGame}
+              boxShadow="base"
+            >
+              Let's Play
+            </Button>
+          )}
+          {pickedTasks.length < 9 && pickedTasks.length > 0 && (
+            <Text color="tomato" fontSize="2xl" fontWeight="bold">
+              Select {9 - pickedTasks.length} more tasks
+            </Text>
+          )}
         </Box>
       </Box>
       <Box pt="36">
