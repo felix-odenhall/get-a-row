@@ -3,6 +3,7 @@ import { useState } from "react";
 import { lines3x3 } from "../utils/gameBoards";
 import { calculateWinner } from "../utils/winningCondition";
 import useStore from "../zustandStore";
+import HasBingo from "./HasBingo";
 
 function GameBoard() {
   const {
@@ -26,25 +27,11 @@ function GameBoard() {
   }));
 
   const [boardSize, setBoardSize] = useState(lines3x3);
-  const toast = useToast();
 
   const handleClick = (item: { id: number }) => {
     pickedTasks.map((task) => {
       if (task.id === item.id) {
         task.isComplete = !task.isComplete;
-        task.isComplete &&
-          toast({
-            position: "bottom",
-            duration: 1500,
-            isClosable: true,
-            render: () => (
-              <Box borderRadius="xl" bg="green.400" p="4">
-                <Text color="white" fontSize="md" fontWeight="semibold">
-                  You just completed the task: {task.task}
-                </Text>
-              </Box>
-            ),
-          });
         setLastCompletedTask(task.task);
       }
       const result = calculateWinner(pickedTasks, boardSize);
@@ -100,6 +87,7 @@ function GameBoard() {
   return (
     <>
       <h2>{username}'s Game board</h2>
+      <HasBingo />
       {hasBingo ? (
         <h1>BINGO</h1>
       ) : (
