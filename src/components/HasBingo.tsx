@@ -1,3 +1,4 @@
+import { Button } from "@chakra-ui/react";
 import useStore from "../zustandStore";
 
 const HasBingo = () => {
@@ -26,7 +27,18 @@ const HasBingo = () => {
   return (
     <>
       <h1>BINGO</h1>
-      <button onClick={() => restartFn()}>Restart</button>
+      <Button
+        colorScheme="orange"
+        size="md"
+        bgGradient="linear(to-b, orange.400, tomato)"
+        fontWeight="medium"
+        fontSize="lg"
+        onClick={restartFn}
+        boxShadow="base"
+        mb="2"
+      >
+        Restart
+      </Button>
     </>
   );
 };
