@@ -48,6 +48,11 @@ function StartGameComponent() {
               Select 9 Tasks
             </Text>
           )}
+          {pickedTasks.length < 9 && pickedTasks.length > 0 && (
+            <Text color="tomato" fontSize="2xl" fontWeight="bold">
+              Select {9 - pickedTasks.length} more tasks
+            </Text>
+          )}
           {pickedTasks.length === 9 && (
             <Button
               colorScheme="orange"
@@ -60,11 +65,6 @@ function StartGameComponent() {
             >
               Let's Play
             </Button>
-          )}
-          {pickedTasks.length < 9 && pickedTasks.length > 0 && (
-            <Text color="tomato" fontSize="2xl" fontWeight="bold">
-              Select {9 - pickedTasks.length} more tasks
-            </Text>
           )}
         </Box>
       </Box>
