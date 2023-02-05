@@ -4,7 +4,7 @@ import StartGameComponent from "../components/StartGameComponent";
 
 import useStore from "../zustandStore";
 
-function Home() {
+const Home = () => {
   const { hasUsername, hasOngoingGame } = useStore((state) => ({
     username: state.username,
     hasUsername: state.hasUsername,
@@ -18,6 +18,6 @@ function Home() {
       return <GameBoard />;
     }
   } else return <CreateUserForm />;
-}
+};
 
 export default Home;

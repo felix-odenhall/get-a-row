@@ -2,7 +2,7 @@ import useStore from "../zustandStore";
 import { Box, Button, Text } from "@chakra-ui/react";
 import SelectTasks from "./SelectTasks";
 
-function StartGameComponent() {
+const StartGameComponent = () => {
   const {
     setHasOngoingGame,
     username,
@@ -73,6 +73,6 @@ function StartGameComponent() {
       </Box>
     </main>
   );
-}
+};
 
 export default StartGameComponent;

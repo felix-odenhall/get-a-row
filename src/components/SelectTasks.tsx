@@ -1,7 +1,7 @@
 import { Button, Stack } from "@chakra-ui/react";
 import useStore, { BingoData } from "../zustandStore";
 
-const DropDownList = () => {
+const SelectTasks = () => {
   const { bingoTasks, pickedTasks, setPickedTasks } = useStore((state) => ({
     bingoTasks: state.bingoTasks,
     pickedTasks: state.pickedTasks,
@@ -40,4 +40,4 @@ const DropDownList = () => {
   );
 };
 
-export default DropDownList;
+export default SelectTasks;
