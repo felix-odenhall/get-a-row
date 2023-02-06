@@ -2,7 +2,7 @@ import { CreateUserForm, GameBoard, StartGame } from "./components/index";
 
 import useStore from "./store/zustandStore";
 
-function App() {
+const App = () => {
   const { hasUsername, hasOngoingGame } = useStore((state) => ({
     username: state.username,
     hasUsername: state.hasUsername,
@@ -16,6 +16,6 @@ function App() {
       return <GameBoard />;
     }
   } else return <CreateUserForm />;
-}
+};
 
 export default App;
