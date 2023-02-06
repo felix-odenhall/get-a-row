@@ -29,7 +29,7 @@ export const StartGame = () => {
   };
 
   return (
-    <main>
+    <section>
       <Box
         pos="fixed"
         w="100%"
@@ -38,39 +38,41 @@ export const StartGame = () => {
         zIndex={2}
         shadow="base"
         p="2"
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
       >
         <Text color="gray.600" fontSize="2rem" fontWeight="bold">
           Welome {username}
         </Text>
-        <Box w="100%" my={2} py="1">
-          {pickedTasks.length === 0 && (
-            <Text color="tomato" fontSize="2xl" fontWeight="bold">
-              Select 9 Tasks
-            </Text>
-          )}
-          {pickedTasks.length < 9 && pickedTasks.length > 0 && (
-            <Text color="tomato" fontSize="2xl" fontWeight="bold">
-              Select {9 - pickedTasks.length} more tasks
-            </Text>
-          )}
-          {pickedTasks.length === 9 && (
-            <Button
-              colorScheme="orange"
-              size="md"
-              bgGradient="linear(to-b, orange.400, tomato)"
-              fontWeight="bold"
-              fontSize="xl"
-              onClick={startGame}
-              boxShadow="base"
-            >
-              Let's Play
-            </Button>
-          )}
-        </Box>
+
+        {pickedTasks.length === 0 && (
+          <Text color="tomato" fontSize="2xl" fontWeight="bold">
+            Select 9 Tasks
+          </Text>
+        )}
+        {pickedTasks.length < 9 && pickedTasks.length > 0 && (
+          <Text color="tomato" fontSize="2xl" fontWeight="bold">
+            Select {9 - pickedTasks.length} more tasks
+          </Text>
+        )}
+        {pickedTasks.length === 9 && (
+          <Button
+            colorScheme="orange"
+            size="md"
+            bgGradient="linear(to-b, orange.400, tomato)"
+            fontWeight="bold"
+            fontSize="xl"
+            onClick={startGame}
+            boxShadow="base"
+          >
+            Let's Play
+          </Button>
+        )}
       </Box>
-      <Box pt="36">
+      <Box py="28">
         <SelectTasks />
       </Box>
-    </main>
+    </section>
   );
 };
