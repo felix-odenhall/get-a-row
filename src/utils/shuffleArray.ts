@@ -1,6 +1,4 @@
-import { BingoData } from "../store/zustandStore";
-
-export const shuffleArray = ([...arr]): BingoData[] => {
+export const shuffleArray = <T>(arr: T[]): T[] => {
   let m = arr.length;
   while (m) {
     const i = Math.floor(Math.random() * m--);
