@@ -1,15 +1,7 @@
 import create from "zustand";
 import { devtools, persist } from "zustand/middleware";
-import { fifaDataObj } from "./fifaData";
-
-const shuffle = ([...arr]): BingoData[] => {
-  let m = arr.length;
-  while (m) {
-    const i = Math.floor(Math.random() * m--);
-    [arr[m], arr[i]] = [arr[i], arr[m]];
-  }
-  return arr;
-};
+import { fifaDataObj } from "../constants/fifaData";
+import { shuffleArray } from "../utils/shuffleArray";
 
 export interface BingoData {
   id: number;
@@ -62,7 +54,7 @@ const useStore = create<UserState>()(
         lastCompletedTask: "",
         setLastCompletedTask: (lastCompletedTask) =>
           set(() => ({ lastCompletedTask })),
-        shuffleArr: (bingoTasks) => shuffle(bingoTasks),
+        shuffleArr: (bingoTasks) => shuffleArray(bingoTasks),
         isOpen: false,
         setIsOpen: () => set((state) => ({ isOpen: !state.isOpen })),
         pickedTasks: [],
