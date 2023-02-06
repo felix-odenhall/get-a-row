@@ -1,6 +1,7 @@
 import useStore from "../../store/zustandStore";
 import { Box, Button, Text } from "@chakra-ui/react";
 import { SelectTasks } from "../index";
+import SelectAmountOfTasks from "./SelectAmountOfTasks";
 
 export const StartGame = () => {
   const {
@@ -45,18 +46,7 @@ export const StartGame = () => {
         <Text color="gray.600" fontSize="2rem" fontWeight="bold">
           Welome {username}
         </Text>
-
-        {pickedTasks.length === 0 && (
-          <Text color="tomato" fontSize="2xl" fontWeight="bold">
-            Select 9 Tasks
-          </Text>
-        )}
-        {pickedTasks.length < 9 && pickedTasks.length > 0 && (
-          <Text color="tomato" fontSize="2xl" fontWeight="bold">
-            Select {9 - pickedTasks.length} more tasks
-          </Text>
-        )}
-        {pickedTasks.length === 9 && (
+        {pickedTasks.length === 9 ? (
           <Button
             colorScheme="orange"
             size="md"
@@ -68,6 +58,14 @@ export const StartGame = () => {
           >
             Let's Play
           </Button>
+        ) : (
+          <SelectAmountOfTasks
+            inputText={
+              pickedTasks.length === 0
+                ? "Select 9 Tasks"
+                : `Select ${9 - pickedTasks.length} more tasks`
+            }
+          />
         )}
       </Box>
       <Box py="28">
