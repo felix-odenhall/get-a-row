@@ -1,8 +1,7 @@
-import useStore from "../zustandStore";
-import BingoGrid from "./BingoGrid";
-import HasBingo from "./HasBingo";
+import useStore from "../../store/zustandStore";
+import { HasBingo, BingoGrid } from "../index";
 
-const GameBoard = () => {
+export const GameBoard = () => {
   const { username, hasBingo } = useStore((state) => ({
     username: state.username,
     hasBingo: state.hasBingo,
@@ -15,5 +14,3 @@ const GameBoard = () => {
     </>
   );
 };
-
-export default GameBoard;

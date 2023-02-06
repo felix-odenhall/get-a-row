@@ -1,8 +1,8 @@
-import useStore from "../zustandStore";
+import useStore from "../../store/zustandStore";
 import { Box, Button, Text } from "@chakra-ui/react";
-import SelectTasks from "./SelectTasks";
+import { SelectTasks } from "../index";
 
-const StartGameComponent = () => {
+export const StartGame = () => {
   const {
     setHasOngoingGame,
     username,
@@ -74,5 +74,3 @@ const StartGameComponent = () => {
     </main>
   );
 };
-
-export default StartGameComponent;

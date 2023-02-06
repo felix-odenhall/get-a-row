@@ -1,6 +1,6 @@
-import useStore from "../zustandStore";
+import useStore from "../../store/zustandStore";
 
-const CreateUserForm = () => {
+export const CreateUserForm = () => {
   const { username, setUsername, setHasUsername } = useStore((state) => ({
     username: state.username,
     setUsername: state.setUsername,
@@ -30,5 +30,3 @@ const CreateUserForm = () => {
     </>
   );
 };
-
-export default CreateUserForm;

@@ -1,8 +1,6 @@
-import CreateUserForm from "./components/CreateUserForm";
-import GameBoard from "./components/GameBoard";
-import StartGameComponent from "./components/StartGameComponent";
+import { CreateUserForm, GameBoard, StartGame } from "./components/index";
 
-import useStore from "./zustandStore";
+import useStore from "./store/zustandStore";
 
 function App() {
   const { hasUsername, hasOngoingGame } = useStore((state) => ({
@@ -13,7 +11,7 @@ function App() {
 
   if (hasUsername) {
     if (!hasOngoingGame) {
-      return <StartGameComponent />;
+      return <StartGame />;
     } else {
       return <GameBoard />;
     }

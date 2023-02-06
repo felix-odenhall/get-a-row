@@ -1,4 +1,4 @@
-import { BingoData } from "../zustandStore";
+import { BingoData } from "../store/zustandStore";
 
 export function calculateWinner(
   bingoBoard: BingoData[],

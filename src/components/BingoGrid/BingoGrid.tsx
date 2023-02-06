@@ -1,10 +1,10 @@
 import { Box, Button, Grid } from "@chakra-ui/react";
 import { useState } from "react";
-import { lines3x3 } from "../utils/gameBoards";
-import { calculateWinner } from "../utils/winningCondition";
-import useStore from "../zustandStore";
+import { lines3x3 } from "../../constants/gameBoards";
+import { calculateWinner } from "../../utils/winningCondition";
+import useStore from "../../store/zustandStore";
 
-const BingoGrid = () => {
+export const BingoGrid = () => {
   const {
     setHasBingo,
     setLastCompletedTask,
@@ -90,5 +90,3 @@ const BingoGrid = () => {
     </>
   );
 };
-
-export default BingoGrid;

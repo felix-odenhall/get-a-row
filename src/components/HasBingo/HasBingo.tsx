@@ -1,7 +1,7 @@
 import { Button } from "@chakra-ui/react";
-import useStore from "../zustandStore";
+import useStore from "../../store/zustandStore";
 
-const HasBingo = () => {
+export const HasBingo = () => {
   const {
     setHasBingo,
     setLastCompletedTask,
@@ -42,5 +42,3 @@ const HasBingo = () => {
     </>
   );
 };
-
-export default HasBingo;
