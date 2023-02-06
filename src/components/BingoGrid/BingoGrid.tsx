@@ -31,8 +31,10 @@ export const BingoGrid = () => {
       }
       const result = calculateWinner(pickedTasks, boardSize);
       if (result) {
-        setHasBingo(true);
-        setLastCompletedTask("");
+        setTimeout(() => {
+          setHasBingo(true);
+          setLastCompletedTask("");
+        }, 200);
       }
 
       return task;
