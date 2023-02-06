@@ -21,7 +21,7 @@ const BingoGrid = () => {
     setHasOngoingGame: state.setHasOngoingGame,
   }));
 
-  const [boardSize, setBoardSize] = useState(lines3x3);
+  const [boardSize] = useState(lines3x3);
 
   const handleClick = (item: { id: number }) => {
     pickedTasks.map((task) => {
