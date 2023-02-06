@@ -15,16 +15,6 @@ export function calculateWinner(
         return true;
       }
     }
-    if (winningConditions[0].length === 4) {
-      const [a, b, c, d] = winningConditions[i];
-      if (
-        bingoBoard[a].isComplete &&
-        bingoBoard[b].isComplete &&
-        bingoBoard[c].isComplete &&
-        bingoBoard[d].isComplete
-      ) {
-        return true;
-      }
-    }
   }
+  return false;
 }
