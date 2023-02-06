@@ -1,3 +1,4 @@
+import { Box } from "@chakra-ui/react";
 import { CreateUserForm, GameBoard, StartGame } from "./components/index";
 
 import useStore from "./store/zustandStore";
@@ -8,14 +9,13 @@ const App = () => {
     hasUsername: state.hasUsername,
     hasOngoingGame: state.hasOngoingGame,
   }));
-
-  if (hasUsername) {
-    if (!hasOngoingGame) {
-      return <StartGame />;
-    } else {
-      return <GameBoard />;
-    }
-  } else return <CreateUserForm />;
+  return (
+    <Box as="main">
+      {hasUsername && !hasOngoingGame && <StartGame />}
+      {hasUsername && hasOngoingGame && <GameBoard />}
+      {!hasUsername && <CreateUserForm />}
+    </Box>
+  );
 };
 
 export default App;
