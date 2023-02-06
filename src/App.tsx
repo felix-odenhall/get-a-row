@@ -1,13 +1,23 @@
-import React from "react";
-import "./App.css";
-import Home from "./pages/Home";
+import CreateUserForm from "./components/CreateUserForm";
+import GameBoard from "./components/GameBoard";
+import StartGameComponent from "./components/StartGameComponent";
+
+import useStore from "./zustandStore";
 
 function App() {
-  return (
-    <div className="App">
-      <Home />
-    </div>
-  );
+  const { hasUsername, hasOngoingGame } = useStore((state) => ({
+    username: state.username,
+    hasUsername: state.hasUsername,
+    hasOngoingGame: state.hasOngoingGame,
+  }));
+
+  if (hasUsername) {
+    if (!hasOngoingGame) {
+      return <StartGameComponent />;
+    } else {
+      return <GameBoard />;
+    }
+  } else return <CreateUserForm />;
 }
 
 export default App;
