@@ -1,5 +1,10 @@
 import { Box } from "@chakra-ui/react";
-import { CreateUserForm, GameBoard, StartGame } from "./components/index";
+import {
+  CreateUserForm,
+  GameBoard,
+  Header,
+  StartGame,
+} from "./components/index";
 
 import useStore from "./store/zustandStore";
 
@@ -11,6 +16,7 @@ const App = () => {
   }));
   return (
     <Box as="main">
+      <Header />
       {hasUsername && !hasOngoingGame && <StartGame />}
       {hasUsername && hasOngoingGame && <GameBoard />}
       {!hasUsername && <CreateUserForm />}
