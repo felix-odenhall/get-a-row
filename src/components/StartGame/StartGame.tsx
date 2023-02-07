@@ -32,18 +32,16 @@ export const StartGame = () => {
   return (
     <section>
       <Box
-        pos="fixed"
         w="100%"
-        top="0"
         bg="white"
-        zIndex={2}
         shadow="base"
         p="2"
+        mb="4"
         display="flex"
         flexDirection="column"
         alignItems="center"
       >
-        <Text color="gray.600" fontSize="2rem" fontWeight="bold">
+        <Text color="gray.600" fontSize="xl" fontWeight="bold">
           Welome {username}
         </Text>
         {pickedTasks.length === 9 ? (
@@ -68,7 +66,7 @@ export const StartGame = () => {
           />
         )}
       </Box>
-      <Box py="28">
+      <Box>
         <SelectTasks />
       </Box>
     </section>

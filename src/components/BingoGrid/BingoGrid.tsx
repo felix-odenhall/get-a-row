@@ -1,4 +1,4 @@
-import { Box, Button, Grid } from "@chakra-ui/react";
+import { Box, Button, Container, Grid, Text } from "@chakra-ui/react";
 import { useState } from "react";
 import { lines3x3 } from "../../constants/gameBoards";
 import { calculateWinner } from "../../utils/winningCondition";
@@ -6,6 +6,7 @@ import useStore from "../../store/zustandStore";
 
 export const BingoGrid = () => {
   const {
+    username,
     setHasBingo,
     setLastCompletedTask,
     pickedTasks,
@@ -48,12 +49,33 @@ export const BingoGrid = () => {
   };
 
   return (
-    <>
+    <Container
+      h="95vh"
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+      flexDirection="column"
+    >
+      <Button
+        colorScheme="orange"
+        size="md"
+        bgGradient="linear(to-b, orange.400, tomato)"
+        fontWeight="medium"
+        fontSize="lg"
+        onClick={pickNewTasks}
+        boxShadow="base"
+        mb="8"
+      >
+        Pick New Tasks
+      </Button>
+      <Text as="h2" fontSize="2xl" fontWeight="extrabold">
+        {username}'s Game board
+      </Text>
       <Grid
         w="100%"
         p="2"
         maxW="480px"
-        m="auto"
+        mb="8"
         templateRows="repeat(3, 1fr)"
         templateColumns="repeat(3, 1fr)"
         gap={1.5}
@@ -77,18 +99,6 @@ export const BingoGrid = () => {
             );
           })}
       </Grid>
-      <Button
-        colorScheme="orange"
-        size="md"
-        bgGradient="linear(to-b, orange.400, tomato)"
-        fontWeight="medium"
-        fontSize="lg"
-        onClick={pickNewTasks}
-        boxShadow="base"
-        mb="2"
-      >
-        Pick New Tasks
-      </Button>
-    </>
+    </Container>
   );
 };

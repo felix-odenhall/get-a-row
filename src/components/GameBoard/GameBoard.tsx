@@ -2,15 +2,9 @@ import useStore from "../../store/zustandStore";
 import { HasBingo, BingoGrid } from "../index";
 
 export const GameBoard = () => {
-  const { username, hasBingo } = useStore((state) => ({
-    username: state.username,
+  const { hasBingo } = useStore((state) => ({
     hasBingo: state.hasBingo,
   }));
 
-  return (
-    <>
-      <h2>{username}'s Game board</h2>
-      {hasBingo ? <HasBingo /> : <BingoGrid />}
-    </>
-  );
+  return <>{hasBingo ? <HasBingo /> : <BingoGrid />}</>;
 };
