@@ -1,5 +1,6 @@
-import { Button } from "@chakra-ui/react";
+import { Button, Container } from "@chakra-ui/react";
 import useStore from "../../store/zustandStore";
+import { BingoAnimation } from "../index";
 
 export const HasBingo = () => {
   const {
@@ -25,8 +26,14 @@ export const HasBingo = () => {
     setPickedTasks(shuffleArr(pickedTasks));
   };
   return (
-    <>
-      <h1>BINGO</h1>
+    <Container
+      h="100vh"
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+      flexDirection="column"
+    >
+      <BingoAnimation />
       <Button
         colorScheme="orange"
         size="md"
@@ -39,6 +46,6 @@ export const HasBingo = () => {
       >
         Restart
       </Button>
-    </>
+    </Container>
   );
 };

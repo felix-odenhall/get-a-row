@@ -4,3 +4,5 @@ export * from "./GameBoard/GameBoard";
 export * from "./HasBingo/HasBingo";
 export * from "./SelectTasks/SelectTasks";
 export * from "./StartGame/StartGame";
+export * from "./BingoAnimation/BingoAnimation";
+export * from "./Header/Header";
