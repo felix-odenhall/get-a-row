@@ -1,6 +1,5 @@
 import {
   Box,
-  Button,
   CloseButton,
   Drawer,
   DrawerBody,
@@ -8,8 +7,6 @@ import {
   DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
-  List,
-  ListItem,
   Text,
   UnorderedList,
   useDisclosure,
