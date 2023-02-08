@@ -1,26 +1,19 @@
 import { Box } from "@chakra-ui/react";
-import { chakra, shouldForwardProp } from "@chakra-ui/react";
-import { motion, isValidMotionProp } from "framer-motion";
-
-const ChakraBox = chakra(motion.div, {
-  /**
-   * Allow motion props and non-Chakra props to be forwarded.
-   */
-  shouldForwardProp: (prop) =>
-    isValidMotionProp(prop) || shouldForwardProp(prop),
-});
 
 interface IHamburgerIconProps {
   onClick: () => void;
-  isOpen: boolean;
 }
 
-const HamburgerIcon = ({ onClick, isOpen }: IHamburgerIconProps) => {
+const HamburgerIcon = ({ onClick }: IHamburgerIconProps) => {
+  const handleClick = () => {
+    onClick();
+  };
+
   return (
-    <Box onClick={onClick}>
-      <Box w="7" h="3px" my="1" bg="black"></Box>
-      <Box w="7" h="3px" my="1" bg="black"></Box>
-      <Box w="7" h="3px" my="1" bg="black"></Box>
+    <Box onClick={handleClick} mr="2">
+      <Box w="6" h="3px" my="1" bg="black"></Box>
+      <Box w="6" h="3px" my="1" bg="black"></Box>
+      <Box w="6" h="3px" my="1" bg="black"></Box>
     </Box>
   );
 };
