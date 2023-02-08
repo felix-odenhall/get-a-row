@@ -6,7 +6,7 @@ interface SelectAmountOfTasksProps {
 
 const SelectAmountOfTasks = ({ inputText }: SelectAmountOfTasksProps) => {
   return (
-    <Text color="tomato" fontSize="2xl" fontWeight="bold">
+    <Text color="white" fontSize="xl" fontWeight="medium" textAlign="center">
       {inputText}
     </Text>
   );
