@@ -3,6 +3,7 @@ import {
   CreateUserForm,
   GameBoard,
   Header,
+  SelectTasks,
   StartGame,
 } from "./components/index";
 
@@ -18,7 +19,7 @@ const App = () => {
     <>
       <Header />
       <Box as="main">
-        {hasUsername && !hasOngoingGame && <StartGame />}
+        {hasUsername && !hasOngoingGame && <SelectTasks />}
         {hasUsername && hasOngoingGame && <GameBoard />}
         {!hasUsername && <CreateUserForm />}
       </Box>
