@@ -10,10 +10,10 @@ const HamburgerIcon = ({ onClick }: IHamburgerIconProps) => {
   };
 
   return (
-    <Box onClick={handleClick} mr="2">
-      <Box w="6" h="3px" my="1" bg="black"></Box>
-      <Box w="6" h="3px" my="1" bg="black"></Box>
-      <Box w="6" h="3px" my="1" bg="black"></Box>
+    <Box onClick={handleClick} mr="1">
+      <Box w="7" h="3px" my="1" bg="black" borderRadius="lg"></Box>
+      <Box w="7" h="3px" my="1" bg="black" borderRadius="lg"></Box>
+      <Box w="7" h="3px" my="1" bg="black" borderRadius="lg"></Box>
     </Box>
   );
 };
