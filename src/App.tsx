@@ -15,12 +15,14 @@ const App = () => {
     hasOngoingGame: state.hasOngoingGame,
   }));
   return (
-    <Box as="main">
+    <>
       <Header />
-      {hasUsername && !hasOngoingGame && <StartGame />}
-      {hasUsername && hasOngoingGame && <GameBoard />}
-      {!hasUsername && <CreateUserForm />}
-    </Box>
+      <Box as="main">
+        {hasUsername && !hasOngoingGame && <StartGame />}
+        {hasUsername && hasOngoingGame && <GameBoard />}
+        {!hasUsername && <CreateUserForm />}
+      </Box>
+    </>
   );
 };
 
