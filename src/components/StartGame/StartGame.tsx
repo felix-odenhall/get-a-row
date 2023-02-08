@@ -32,6 +32,7 @@ export const StartGame = () => {
   return (
     <section>
       <Box
+        top="8vh"
         w="100%"
         bg="white"
         shadow="base"
@@ -66,7 +67,7 @@ export const StartGame = () => {
           />
         )}
       </Box>
-      <Box>
+      <Box mb="10">
         <SelectTasks />
       </Box>
     </section>
