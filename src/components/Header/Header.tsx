@@ -1,7 +1,13 @@
-import { Box, CloseButton, Text, useDisclosure } from "@chakra-ui/react";
+import {
+  Box,
+  CloseButton,
+  Text,
+  useDisclosure,
+  useMediaQuery,
+} from "@chakra-ui/react";
 import useStore from "../../store/zustandStore";
 import HamburgerIcon from "./HamburgerIcon";
-import PickTasksText from "./PickTasksText";
+import PickTasksContainer from "./PickTasksContainer";
 import Navbar from "./Navbar/Navbar";
 
 export const Header = () => {
@@ -10,6 +16,8 @@ export const Header = () => {
     hasUsername: state.hasUsername,
   }));
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const [mediaTablet] = useMediaQuery("(min-width: 768px)");
 
   return (
     <>
@@ -21,15 +29,17 @@ export const Header = () => {
         w="100%"
         bg="rgba(255,255,255)"
         mb="5"
+        shadow={`-2px 2px 5px 1px rgba(0, 0, 0, 0.2)`}
         zIndex={5}
       >
         <Box
           display="flex"
           h="8vh"
+          w={mediaTablet ? "768px" : "100%"}
           alignItems="center"
           justifyContent="space-between"
-          shadow="md"
           px="1"
+          m="0 auto"
         >
           <Text fontSize="xl" fontWeight="bold">
             Get A Row
@@ -42,7 +52,7 @@ export const Header = () => {
           )}
           <Navbar isOpen={isOpen} onClose={onClose} />
         </Box>
-        {hasUsername && !hasOngoingGame && <PickTasksText />}
+        {hasUsername && !hasOngoingGame && <PickTasksContainer />}
       </Box>
     </>
   );
