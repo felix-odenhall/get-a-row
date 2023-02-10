@@ -1,4 +1,4 @@
-import { Box, Button, Container, Grid, Text } from "@chakra-ui/react";
+import { Box, Container, Grid, Text } from "@chakra-ui/react";
 import { useState } from "react";
 import { lines3x3 } from "../../constants/gameBoards";
 import { calculateWinner } from "../../utils/winningCondition";
@@ -56,18 +56,6 @@ export const BingoGrid = () => {
       justifyContent="center"
       flexDirection="column"
     >
-      <Button
-        colorScheme="orange"
-        size="md"
-        bgGradient="linear(to-b, orange.400, tomato)"
-        fontWeight="medium"
-        fontSize="lg"
-        onClick={pickNewTasks}
-        boxShadow="base"
-        mb="8"
-      >
-        Pick New Tasks
-      </Button>
       <Text as="h2" fontSize="2xl" fontWeight="extrabold">
         {username}'s Game board
       </Text>
