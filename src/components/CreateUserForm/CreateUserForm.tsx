@@ -1,3 +1,4 @@
+import { Box, Button, Input } from "@chakra-ui/react";
 import useStore from "../../store/zustandStore";
 
 export const CreateUserForm = () => {
@@ -14,19 +15,30 @@ export const CreateUserForm = () => {
   };
 
   return (
-    <>
+    <Box
+      h="50vh"
+      w="100%"
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+    >
       <form onSubmit={handleSubmit}>
-        <input
-          id="username"
-          type="text"
-          name="username"
-          autoComplete="off"
-          onChange={(e) => setUsername?.(e.target.value)}
-          placeholder="Enter your name..."
-          required
-        />
-        <button type="submit">Add name</button>
+        <Box display="flex" gap="4" px="4">
+          <Input
+            id="username"
+            h="14"
+            type="text"
+            name="username"
+            autoComplete="off"
+            onChange={(e) => setUsername?.(e.target.value)}
+            placeholder="Enter your name..."
+            required
+          />
+          <Button type="submit" h="14" px="8">
+            Add name
+          </Button>
+        </Box>
       </form>
-    </>
+    </Box>
   );
 };
