@@ -33,9 +33,9 @@ export const CreateUserForm = () => {
             onChange={(e) => setUsername?.(e.target.value)}
             placeholder="Enter your name..."
             required
-            data-cy="user-input"
+            data-cy="userInput"
           />
-          <Button type="submit" h="14" px="8" data-cy="submit-button">
+          <Button type="submit" h="14" px="8" data-cy="submitButton">
             Add name
           </Button>
         </Box>
