@@ -16,21 +16,35 @@ interface NavbarProps {
 }
 
 const Navbar = ({ isOpen, onClose }: NavbarProps) => {
-  const { setLastCompletedTask, setPickedTasks, setHasOngoingGame } = useStore(
-    (state) => ({
-      setLastCompletedTask: state.setLastCompletedTask,
-      setPickedTasks: state.setPickedTasks,
-      setHasOngoingGame: state.setHasOngoingGame,
-      hasOngoingGame: state.hasOngoingGame,
-      hasUsername: state.hasUsername,
-    })
-  );
+  const {
+    setLastCompletedTask,
+    setPickedTasks,
+    setHasOngoingGame,
+    setUsername,
+    setHasUsername,
+  } = useStore((state) => ({
+    setUsername: state.setUsername,
+    setHasUsername: state.setHasUsername,
+    setLastCompletedTask: state.setLastCompletedTask,
+    setPickedTasks: state.setPickedTasks,
+    setHasOngoingGame: state.setHasOngoingGame,
+    hasOngoingGame: state.hasOngoingGame,
+    hasUsername: state.hasUsername,
+  }));
 
   const pickNewTasks = () => {
     onClose();
     setHasOngoingGame(false);
     setPickedTasks([]);
     setLastCompletedTask("");
+  };
+  const changeName = () => {
+    onClose();
+    setHasOngoingGame(false);
+    setPickedTasks([]);
+    setLastCompletedTask("");
+    setUsername("");
+    setHasUsername(false);
   };
 
   return (
@@ -54,12 +68,12 @@ const Navbar = ({ isOpen, onClose }: NavbarProps) => {
 
         <DrawerBody px="0">
           <UnorderedList listStyleType="none" m="0">
-            <NavbarListButton onClick={onClose} buttonName="Reset game" />
+            <NavbarListButton onClick={onClose} buttonName="Reset board" />
             <NavbarListButton
               onClick={pickNewTasks}
               buttonName="Pick new tasks"
             />
-            <NavbarListButton onClick={onClose} buttonName="Change name" />
+            <NavbarListButton onClick={changeName} buttonName="Change name" />
           </UnorderedList>
         </DrawerBody>
 
