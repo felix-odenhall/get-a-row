@@ -1,7 +1,7 @@
 describe("The Home Page", () => {
   it("successfully loads", () => {
-    cy.visit("http://localhost:3000"); // change URL to match your dev URL
-    //cy.get("nav").should("be.visable");
-    cy.get("input").should("not.have.value", "Jane");
+    cy.visit("http://localhost:3000");
+    cy.get("[data-cy=user-input]").should("be.visible");
+    cy.get("[data-cy=submit-button]").should("be.visible");
   });
 });
