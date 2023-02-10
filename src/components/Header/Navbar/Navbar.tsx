@@ -25,6 +25,7 @@ const Navbar = ({ isOpen, onClose }: NavbarProps) => {
     setUsername,
     setHasUsername,
     setHasBingo,
+    hasOngoingGame,
   } = useStore((state) => ({
     setUsername: state.setUsername,
     setHasUsername: state.setHasUsername,
@@ -85,12 +86,14 @@ const Navbar = ({ isOpen, onClose }: NavbarProps) => {
 
         <DrawerBody px="0">
           <UnorderedList listStyleType="none" m="0">
-            <NavbarListButton onClick={restartGame} buttonName="Restart" />
             <NavbarListButton
               onClick={pickNewTasks}
               buttonName="Pick new tasks"
             />
             <NavbarListButton onClick={changeName} buttonName="Change name" />
+            {hasOngoingGame && (
+              <NavbarListButton onClick={restartGame} buttonName="Restart" />
+            )}
           </UnorderedList>
         </DrawerBody>
 
