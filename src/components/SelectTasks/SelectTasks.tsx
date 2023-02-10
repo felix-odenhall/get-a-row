@@ -33,7 +33,7 @@ export const SelectTasks = () => {
 
   return (
     <>
-      <Stack spacing={3} direction="column" align="center">
+      <Stack spacing={3} direction="column" align="center" mb="10">
         {itemsList}
       </Stack>
     </>

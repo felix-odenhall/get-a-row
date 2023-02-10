@@ -28,7 +28,7 @@ export const Header = () => {
         left="0"
         w="100%"
         bg="rgba(255,255,255)"
-        mb="5"
+        mb="10"
         shadow={`-2px 2px 5px 1px rgba(0, 0, 0, 0.2)`}
         zIndex={5}
       >

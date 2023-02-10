@@ -37,7 +37,6 @@ export const BingoGrid = () => {
 
   return (
     <Container
-      h="95vh"
       display="flex"
       alignItems="center"
       justifyContent="center"
