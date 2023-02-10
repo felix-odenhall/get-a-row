@@ -16,7 +16,7 @@ export const HasBingo = () => {
     pickedTasks: state.pickedTasks,
     setPickedTasks: state.setPickedTasks,
   }));
-  const restartFn = () => {
+  const restartGame = () => {
     setHasBingo(false);
     setLastCompletedTask("");
     pickedTasks.map((el) => {
@@ -40,7 +40,7 @@ export const HasBingo = () => {
         bgGradient="linear(to-b, orange.400, tomato)"
         fontWeight="medium"
         fontSize="lg"
-        onClick={restartFn}
+        onClick={restartGame}
         boxShadow="base"
         mb="2"
       >
