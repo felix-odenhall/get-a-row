@@ -5,22 +5,15 @@ import { calculateWinner } from "../../utils/winningCondition";
 import useStore from "../../store/zustandStore";
 
 export const BingoGrid = () => {
-  const {
-    username,
-    setHasBingo,
-    setLastCompletedTask,
-    pickedTasks,
-    setPickedTasks,
-    setHasOngoingGame,
-  } = useStore((state) => ({
-    username: state.username,
-    hasBingo: state.hasBingo,
-    setHasBingo: state.setHasBingo,
-    setLastCompletedTask: state.setLastCompletedTask,
-    pickedTasks: state.pickedTasks,
-    setPickedTasks: state.setPickedTasks,
-    setHasOngoingGame: state.setHasOngoingGame,
-  }));
+  const { username, setHasBingo, setLastCompletedTask, pickedTasks } = useStore(
+    (state) => ({
+      username: state.username,
+      hasBingo: state.hasBingo,
+      setHasBingo: state.setHasBingo,
+      setLastCompletedTask: state.setLastCompletedTask,
+      pickedTasks: state.pickedTasks,
+    })
+  );
 
   const [boardSize] = useState(lines3x3);
 
@@ -40,12 +33,6 @@ export const BingoGrid = () => {
 
       return task;
     });
-  };
-
-  const pickNewTasks = () => {
-    setHasOngoingGame(false);
-    setPickedTasks([]);
-    setLastCompletedTask("");
   };
 
   return (
