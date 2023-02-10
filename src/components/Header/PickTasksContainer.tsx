@@ -2,7 +2,7 @@ import { Box, Button } from "@chakra-ui/react";
 import useStore from "../../store/zustandStore";
 import SelectAmountOfTasks from "./SelectAmountOfTasks";
 
-const PickTasksText = () => {
+const PickTasksContainer = () => {
   const {
     setHasOngoingGame,
     bingoTasks,
@@ -61,4 +61,4 @@ const PickTasksText = () => {
   );
 };
 
-export default PickTasksText;
+export default PickTasksContainer;
