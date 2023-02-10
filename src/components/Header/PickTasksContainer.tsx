@@ -7,14 +7,14 @@ const PickTasksContainer = () => {
     setHasOngoingGame,
     bingoTasks,
     setBingoTasks,
-    shuffleArr,
     pickedTasks,
+    shuffleArr,
   } = useStore((state) => ({
     setHasOngoingGame: state.setHasOngoingGame,
     bingoTasks: state.bingoTasks,
     setBingoTasks: state.setBingoTasks,
-    shuffleArr: state.shuffleArr,
     pickedTasks: state.pickedTasks,
+    shuffleArr: state.shuffleArr,
   }));
 
   const startGame = () => {

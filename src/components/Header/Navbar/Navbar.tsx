@@ -18,19 +18,36 @@ interface NavbarProps {
 const Navbar = ({ isOpen, onClose }: NavbarProps) => {
   const {
     setLastCompletedTask,
+    shuffleArr,
+    pickedTasks,
     setPickedTasks,
     setHasOngoingGame,
     setUsername,
     setHasUsername,
+    setHasBingo,
   } = useStore((state) => ({
     setUsername: state.setUsername,
     setHasUsername: state.setHasUsername,
     setLastCompletedTask: state.setLastCompletedTask,
+    shuffleArr: state.shuffleArr,
+    pickedTasks: state.pickedTasks,
     setPickedTasks: state.setPickedTasks,
     setHasOngoingGame: state.setHasOngoingGame,
     hasOngoingGame: state.hasOngoingGame,
+    setHasBingo: state.setHasBingo,
     hasUsername: state.hasUsername,
   }));
+
+  const restartGame = () => {
+    onClose();
+    setHasBingo(false);
+    setLastCompletedTask("");
+    pickedTasks.map((el) => {
+      el.isComplete = false;
+      return el;
+    });
+    setPickedTasks(shuffleArr(pickedTasks));
+  };
 
   const pickNewTasks = () => {
     onClose();
@@ -68,7 +85,7 @@ const Navbar = ({ isOpen, onClose }: NavbarProps) => {
 
         <DrawerBody px="0">
           <UnorderedList listStyleType="none" m="0">
-            <NavbarListButton onClick={onClose} buttonName="Reset board" />
+            <NavbarListButton onClick={restartGame} buttonName="Restart" />
             <NavbarListButton
               onClick={pickNewTasks}
               buttonName="Pick new tasks"
