@@ -33,6 +33,7 @@ export const Header = () => {
         zIndex={5}
       >
         <Box
+          as="nav"
           display="flex"
           h="8vh"
           w={mediaTablet ? "768px" : "100%"}
