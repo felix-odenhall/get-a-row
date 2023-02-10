@@ -4,7 +4,6 @@ import {
   GameBoard,
   Header,
   SelectTasks,
-  StartGame,
 } from "./components/index";
 
 import useStore from "./store/zustandStore";
