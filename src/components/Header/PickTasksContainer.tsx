@@ -46,8 +46,9 @@ const PickTasksContainer = () => {
           fontSize="xl"
           onClick={startGame}
           boxShadow="base"
+          data-cy="startGameButton"
         >
-          Let's Play
+          Start game
         </Button>
       ) : (
         <SelectAmountOfTasks
