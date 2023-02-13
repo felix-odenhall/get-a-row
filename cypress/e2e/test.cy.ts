@@ -11,7 +11,7 @@ describe("Visit the login page", () => {
   });
 });
 
-describe("Enter a username", () => {
+describe("Enter username", () => {
   before(() => {
     cy.visit("http://localhost:3000");
     cy.get("[data-cy=userInput]").should("be.visible");
@@ -37,7 +37,7 @@ describe("Pick tasks", () => {
     cy.get("[data-cy=userInput]").type("MyUsername1");
     cy.get("[data-cy=submitButton]").click();
   });
-  it("Should be able to select and unselect tasks when a username is added", () => {
+  it("should be able to select and unselect tasks when a username is added", () => {
     cy.get("[data-cy=pickTasksContainer]").should("be.visible");
     cy.get("[data-cy=pickTaskList]>li").should("have.length.gt", 9);
     cy.get("[data-cy=pickTasksContainer]>p").contains("Pick 9 tasks");
@@ -74,7 +74,7 @@ describe("Start game", () => {
     cy.get("[data-cy=pickTaskList]>li").eq(7).click();
     cy.get("[data-cy=pickTaskList]>li").eq(8).click();
   });
-  it("Should be able to start game when 9 tasks are picked", () => {
+  it("should be able to start game when 9 tasks are picked", () => {
     cy.get("[data-cy=pickTasksContainer]>p").should("not.exist");
     cy.get("[data-cy=startGameButton]").should("be.visible");
     cy.get("[data-cy=startGameButton]").click();
