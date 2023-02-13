@@ -42,8 +42,9 @@ export const SelectTasks = () => {
         mx="auto"
         mb="10"
         justifyContent="center"
-        px="5"
+        px="1"
         data-cy="pickTaskList"
+        maxW="768px"
       >
         {itemsList}
       </UnorderedList>
