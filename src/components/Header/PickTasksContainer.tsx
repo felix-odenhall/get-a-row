@@ -35,6 +35,7 @@ const PickTasksContainer = () => {
       bg="gray.700"
       justifyContent="center"
       shadow="sm"
+      data-cy="pickTasksContainer"
     >
       {pickedTasks.length === 9 ? (
         <Button
@@ -52,7 +53,7 @@ const PickTasksContainer = () => {
         <SelectAmountOfTasks
           inputText={
             pickedTasks.length === 0
-              ? "Pick 9 Tasks"
+              ? "Pick 9 tasks"
               : `Pick ${9 - pickedTasks.length} more tasks`
           }
         />
