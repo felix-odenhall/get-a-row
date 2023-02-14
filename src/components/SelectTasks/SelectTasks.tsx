@@ -16,7 +16,7 @@ export const SelectTasks = () => {
 
   const itemsList = bingoTasks.map((item) => {
     return (
-      <ListItem>
+      <ListItem key={item.id}>
         <Button
           my="1"
           size="sm"
@@ -25,7 +25,6 @@ export const SelectTasks = () => {
           h="12"
           fontSize="md"
           boxShadow="base"
-          key={item.id}
           onClick={() => handleClick(item)}
           data-cy="pickTaskButton"
         >
