@@ -1,6 +1,7 @@
 import { Box, Button, Input, Text } from "@chakra-ui/react";
 import { useState } from "react";
 import useStore from "../../store/zustandStore";
+import { isValidUsername } from "../../utils/isValidUsername";
 
 export const CreateUserForm = () => {
   const { username, setUsername, setHasUsername } = useStore((state) => ({
@@ -13,15 +14,16 @@ export const CreateUserForm = () => {
 
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    const regexp = /^[A-Za-z0-9]*$/;
-    if (!regexp.test(username) || !regexp.test(username)) {
+
+    const checkUsername = isValidUsername(username);
+
+    if (!checkUsername) {
       setUsername("");
       setUsernameError(true);
       return;
     }
     setUsername(username);
     setHasUsername(true);
-    usernameError && setUsernameError(false);
   };
 
   return (
