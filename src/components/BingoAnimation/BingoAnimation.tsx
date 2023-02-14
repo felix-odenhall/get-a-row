@@ -29,6 +29,7 @@ export const BingoAnimation = () => {
       alignItems="center"
       fontSize="5xl"
       mb="40"
+      data-cy="bingoText"
     >
       BINGO
     </ChakraBox>

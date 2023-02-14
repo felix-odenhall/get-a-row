@@ -43,6 +43,7 @@ export const HasBingo = () => {
         onClick={restartGame}
         boxShadow="base"
         mb="2"
+        data-cy="restartGame"
       >
         Restart
       </Button>
