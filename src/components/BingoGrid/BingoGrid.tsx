@@ -42,7 +42,12 @@ export const BingoGrid = () => {
       justifyContent="center"
       flexDirection="column"
     >
-      <Text as="h2" fontSize="2xl" fontWeight="extrabold">
+      <Text
+        as="h2"
+        fontSize="2xl"
+        fontWeight="extrabold"
+        data-cy="usersGameBoardLabel"
+      >
         {username}'s Game board
       </Text>
       <Grid
@@ -53,6 +58,7 @@ export const BingoGrid = () => {
         templateRows="repeat(3, 1fr)"
         templateColumns="repeat(3, 1fr)"
         gap={1.5}
+        data-cy="bingoBoard"
       >
         {pickedTasks.length === 9 &&
           pickedTasks.map((el) => {
@@ -67,6 +73,7 @@ export const BingoGrid = () => {
                 p="1"
                 boxShadow="base"
                 onClick={() => handleClick(el)}
+                data-cy="bingoTile"
               >
                 {el.task}
               </Box>

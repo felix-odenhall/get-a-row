@@ -1,4 +1,4 @@
-import { Button, Stack } from "@chakra-ui/react";
+import { Button, ListItem, UnorderedList } from "@chakra-ui/react";
 import useStore, { BingoData } from "../../store/zustandStore";
 
 export const SelectTasks = () => {
@@ -16,26 +16,37 @@ export const SelectTasks = () => {
 
   const itemsList = bingoTasks.map((item) => {
     return (
-      <Button
-        size="sm"
-        colorScheme={pickedTasks.includes(item) ? "green" : "gray"}
-        w="92%"
-        h="12"
-        fontSize="md"
-        boxShadow="base"
-        key={item.id}
-        onClick={() => handleClick(item)}
-      >
-        {item.task}
-      </Button>
+      <ListItem key={item.id}>
+        <Button
+          my="1"
+          size="sm"
+          colorScheme={pickedTasks.includes(item) ? "green" : "gray"}
+          w="100%"
+          h="12"
+          fontSize="md"
+          boxShadow="base"
+          onClick={() => handleClick(item)}
+          data-cy="pickTaskButton"
+        >
+          {item.task}
+        </Button>
+      </ListItem>
     );
   });
 
   return (
     <>
-      <Stack spacing={3} direction="column" align="center" mb="10">
+      <UnorderedList
+        listStyleType="none"
+        mx="auto"
+        mb="10"
+        justifyContent="center"
+        px="1"
+        data-cy="pickTaskList"
+        maxW="768px"
+      >
         {itemsList}
-      </Stack>
+      </UnorderedList>
     </>
   );
 };

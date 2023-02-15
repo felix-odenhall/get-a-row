@@ -28,11 +28,12 @@ export const Header = () => {
         left="0"
         w="100%"
         bg="rgba(255,255,255)"
-        mb="10"
+        mb="5"
         shadow={`-2px 2px 5px 1px rgba(0, 0, 0, 0.2)`}
         zIndex={5}
       >
         <Box
+          as="nav"
           display="flex"
           h="8vh"
           w={mediaTablet ? "768px" : "100%"}
