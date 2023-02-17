@@ -27,8 +27,8 @@ export const Header = () => {
         top="0"
         left="0"
         w="100%"
-        bg="rgba(255,255,255)"
         mb="5"
+        bgGradient="linear(to-b, white, gray.100)"
         shadow={`-2px 2px 5px 1px rgba(0, 0, 0, 0.2)`}
         zIndex={5}
       >
@@ -39,17 +39,23 @@ export const Header = () => {
           w={mediaTablet ? "768px" : "100%"}
           alignItems="center"
           justifyContent="space-between"
-          px="1"
+          bgGradient="linear(to-b, white, gray.100)"
+          px="2"
           m="0 auto"
         >
-          <Text fontSize="xl" fontWeight="bold">
+          <Text
+            fontSize="2xl"
+            fontWeight="bold"
+            bgGradient="linear(to-b, pink.500, cyan.500)"
+            bgClip="text"
+          >
             Get A Row
           </Text>
 
           {!isOpen ? (
             <HamburgerIcon onClick={onOpen} />
           ) : (
-            <CloseButton fontSize="xl" w="6" mr="1" />
+            <CloseButton fontSize="xl" w="5" mr="1" />
           )}
           <Navbar isOpen={isOpen} onClose={onClose} />
         </Box>
