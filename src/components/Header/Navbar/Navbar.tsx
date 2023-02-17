@@ -66,7 +66,13 @@ const Navbar = ({ isOpen, onClose }: NavbarProps) => {
   };
 
   return (
-    <Drawer isOpen={isOpen} placement="right" onClose={onClose} size="full">
+    <Drawer
+      isOpen={isOpen}
+      placement="right"
+      onClose={onClose}
+      size="full"
+      autoFocus={false}
+    >
       <DrawerOverlay
         mt="8vh"
         bg="rgba(255,255,255,0.25)"
