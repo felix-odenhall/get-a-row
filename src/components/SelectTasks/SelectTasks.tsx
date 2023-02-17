@@ -30,6 +30,7 @@ export const SelectTasks = () => {
           fontSize="md"
           boxShadow="0px 2px 0 0.5px rgba(0, 0, 0, 1)"
           onClick={() => handleClick(item)}
+          data-cy="pickTaskButton"
           transition="all .1s ease"
           _active={{ transform: "translateY(3px)", boxShadow: "none" }}
           _hover={{

@@ -43,6 +43,7 @@ export const CreateUserForm = () => {
             borderColor="black"
             border="2px"
             onChange={(e) => setUsername?.(e.target.value)}
+            data-cy="userInput"
             required
             bg="white"
             w="95%"
