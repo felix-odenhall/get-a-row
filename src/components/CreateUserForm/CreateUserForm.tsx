@@ -29,19 +29,53 @@ export const CreateUserForm = () => {
   return (
     <Box mt="52" w="100%" maxW="768px" mx="auto">
       <form onSubmit={handleSubmit} autoComplete="off">
-        <Box display="flex" gap="4" px="4">
+        <Box
+          display="flex"
+          gap="4"
+          px="4"
+          justifyContent="center"
+          alignItems="center"
+        >
           <Input
-            id="username"
-            h="14"
+            placeholder="Enter your name"
             type="text"
-            name="username"
-            onChange={(e) => setUsername?.(e.target.value)}
-            placeholder="Enter your username..."
-            required
-            data-cy="userInput"
             value={username}
+            borderColor="black"
+            border="2px"
+            onChange={(e) => setUsername?.(e.target.value)}
+            required
+            bg="white"
+            w="95%"
+            p="2"
+            h="100%"
+            _focus={{
+              border: "2px",
+              borderColor: "rgba(0, 0, 0, 0.6)",
+              boxShadow: " inset 1px 1px 0px 0px rgba(0, 0, 0, 0.5)",
+            }}
+            _hover={{
+              border: "2px",
+              borderColor: "black",
+              boxShadow: "0 0 0 2px var(--chakra-ui-focus-ring-color)",
+            }}
           />
-          <Button type="submit" h="14" px="8" data-cy="submitButton">
+          <Button
+            type="submit"
+            bg="white"
+            p="5"
+            m="1"
+            border="2px"
+            borderColor="black"
+            borderRadius="3xl"
+            fontWeight="bold"
+            fontSize="lg"
+            boxShadow="0px 4px 0 1px rgba(0, 0, 0, 1)"
+            transition="all .1s ease"
+            _active={{ transform: "translateY(3px)", boxShadow: "none" }}
+            _hover={{
+              transform: "scale(2px)",
+            }}
+          >
             Add name
           </Button>
         </Box>

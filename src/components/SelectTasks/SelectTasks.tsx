@@ -18,15 +18,23 @@ export const SelectTasks = () => {
     return (
       <ListItem key={item.id}>
         <Button
-          my="1"
-          size="sm"
-          colorScheme={pickedTasks.includes(item) ? "green" : "gray"}
-          w="100%"
-          h="12"
+          bg={pickedTasks.includes(item) ? "green" : "white"}
+          color={pickedTasks.includes(item) ? "white" : "black"}
+          p="5"
+          m="1.5"
+          w="95%"
+          border="1px"
+          borderColor="black"
+          borderRadius="2xl"
+          fontWeight="semibold"
           fontSize="md"
-          boxShadow="base"
+          boxShadow="0px 2px 0 0.5px rgba(0, 0, 0, 1)"
           onClick={() => handleClick(item)}
-          data-cy="pickTaskButton"
+          transition="all .1s ease"
+          _active={{ transform: "translateY(3px)", boxShadow: "none" }}
+          _hover={{
+            transform: "scale(2px)",
+          }}
         >
           {item.task}
         </Button>
@@ -44,6 +52,8 @@ export const SelectTasks = () => {
         px="1"
         data-cy="pickTaskList"
         maxW="768px"
+        display="flex"
+        flexDirection="column"
       >
         {itemsList}
       </UnorderedList>
