@@ -71,6 +71,7 @@ export const CreateUserForm = () => {
             fontWeight="bold"
             fontSize="lg"
             boxShadow="0px 4px 0 1px rgba(0, 0, 0, 1)"
+            data-cy="submitButton"
             transition="all .1s ease"
             _active={{ transform: "translateY(3px)", boxShadow: "none" }}
             _hover={{
