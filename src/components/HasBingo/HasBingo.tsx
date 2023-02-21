@@ -47,7 +47,7 @@ export const HasBingo = () => {
         fontSize="3xl"
         boxShadow="0 2px 0 0.5px rgba(0, 0, 0, 1)"
         onClick={restartGame}
-        data-cy="pickTaskButton"
+        data-cy="restartGame"
         transition="all .1s ease"
         _active={{ transform: "translateY(0.5px)", boxShadow: "none" }}
         _hover={{
