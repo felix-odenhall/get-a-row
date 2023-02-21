@@ -32,7 +32,7 @@ const PickTasksContainer = () => {
       flexDirection="column"
       w="100%"
       h="6vh"
-      bg="gray.700"
+      bg="gray.600"
       justifyContent="center"
       shadow="sm"
       data-cy="pickTasksContainer"
@@ -41,11 +41,12 @@ const PickTasksContainer = () => {
         <Button
           colorScheme="orange"
           size="md"
-          bgGradient="linear(to-b, orange.400, tomato)"
+          bg="#FF7200"
           fontWeight="bold"
           fontSize="xl"
           onClick={startGame}
           boxShadow="base"
+          borderRadius="0"
           data-cy="startGameButton"
         >
           Start game
@@ -54,8 +55,8 @@ const PickTasksContainer = () => {
         <SelectAmountOfTasks
           inputText={
             pickedTasks.length === 0
-              ? "Pick 9 tasks"
-              : `Pick ${9 - pickedTasks.length} more tasks`
+              ? "Select 9 tasks"
+              : `Select ${9 - pickedTasks.length} more tasks`
           }
         />
       )}
