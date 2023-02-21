@@ -3,27 +3,22 @@ import useStore from "../../store/zustandStore";
 import SelectAmountOfTasks from "./SelectAmountOfTasks";
 
 const PickTasksContainer = () => {
-  const {
-    setHasOngoingGame,
-    bingoTasks,
-    setBingoTasks,
-    pickedTasks,
-    shuffleArr,
-  } = useStore((state) => ({
-    setHasOngoingGame: state.setHasOngoingGame,
-    bingoTasks: state.bingoTasks,
-    setBingoTasks: state.setBingoTasks,
-    pickedTasks: state.pickedTasks,
-    shuffleArr: state.shuffleArr,
-  }));
+  const { setHasOngoingGame, setPickedTasks, pickedTasks, shuffleArr } =
+    useStore((state) => ({
+      setHasOngoingGame: state.setHasOngoingGame,
+      pickedTasks: state.pickedTasks,
+      setPickedTasks: state.setPickedTasks,
+      shuffleArr: state.shuffleArr,
+    }));
 
   const startGame = () => {
     setHasOngoingGame(true);
-    setBingoTasks(shuffleArr(bingoTasks));
+    setPickedTasks(shuffleArr(pickedTasks));
     pickedTasks.map((item) => {
       item.isComplete = false;
       return item;
     });
+    window.scrollTo(0, 0);
   };
 
   return (
