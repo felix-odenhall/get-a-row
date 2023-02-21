@@ -24,6 +24,7 @@ export const CreateUserForm = () => {
     }
     setUsername(username);
     setHasUsername(true);
+    window.scrollTo(0, 0);
   };
 
   return (
@@ -70,7 +71,7 @@ export const CreateUserForm = () => {
             borderRadius="3xl"
             fontWeight="bold"
             fontSize="lg"
-            boxShadow="0px 4px 0 1px rgba(0, 0, 0, 1)"
+            boxShadow="0 2px 0 0.5px rgba(0, 0, 0, 1)"
             data-cy="submitButton"
             transition="all .1s ease"
             _active={{ transform: "translateY(3px)", boxShadow: "none" }}

@@ -27,7 +27,6 @@ export const Header = () => {
         top="0"
         left="0"
         w="100%"
-        mb="5"
         bgGradient="linear(to-b, white, gray.100)"
         shadow={`-2px 2px 5px 1px rgba(0, 0, 0, 0.2)`}
         zIndex={5}
@@ -46,7 +45,7 @@ export const Header = () => {
           <Text
             fontSize="2xl"
             fontWeight="bold"
-            bgGradient="linear(to-b, pink.500, cyan.500)"
+            bgGradient="linear(to-b, pink.700, cyan.600)"
             bgClip="text"
           >
             Get A Row

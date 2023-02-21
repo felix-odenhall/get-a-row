@@ -47,33 +47,49 @@ export const BingoGrid = () => {
         fontSize="2xl"
         fontWeight="extrabold"
         data-cy="usersGameBoardLabel"
+        my="4"
+        color="black"
       >
-        {username}'s Game board
+        {username}'s game board
       </Text>
       <Grid
-        w="100%"
         p="2"
-        maxW="480px"
+        maxW="500px"
         mb="8"
         templateRows="repeat(3, 1fr)"
         templateColumns="repeat(3, 1fr)"
         gap={1.5}
         data-cy="bingoBoard"
+        bg="gray.400"
+        borderRadius="xl"
+        boxShadow="inset 1px 1px 1px gray"
+        border="2px"
       >
         {pickedTasks.length === 9 &&
           pickedTasks.map((el) => {
             return (
               <Box
-                bg={el.isComplete ? "green.400" : "gray.200"}
+                bg={el.isComplete ? "green" : "white"}
                 color={el.isComplete ? "white" : "black"}
                 fontWeight="medium"
                 as="button"
-                h="36"
+                h="28"
+                w="28"
                 key={el.id}
                 p="1"
-                boxShadow="base"
+                userSelect="none"
                 onClick={() => handleClick(el)}
                 data-cy="bingoTile"
+                border="2px"
+                borderColor="black"
+                borderRadius="xl"
+                fontSize="md"
+                boxShadow="0 2px 0 0.5px rgba(0, 0, 0, 1)"
+                transition="all .1s ease"
+                _active={{ transform: "translateY(0.5px)", boxShadow: "none" }}
+                _hover={{
+                  transform: "scale(2px)",
+                }}
               >
                 {el.task}
               </Box>
