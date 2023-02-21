@@ -13,21 +13,21 @@ export const BingoAnimation = () => {
   return (
     <ChakraBox
       animate={{
-        scale: [0, 2, 1, 1.5, 1, 1],
+        scale: [0, 1.6, 0.4, 1],
       }}
       // @ts-ignore no problem in operation, although type error appears.
       transition={{
-        duration: 1,
+        duration: 0.7,
         ease: "easeInOut",
       }}
       padding="2"
-      bgGradient="linear(to-l, #7928CA, #FF0080)"
+      bg="gray.700"
       bgClip="text"
       display="flex"
       fontWeight="extrabold"
       justifyContent="center"
       alignItems="center"
-      fontSize="5xl"
+      fontSize="7xl"
       mb="40"
       data-cy="bingoText"
     >
