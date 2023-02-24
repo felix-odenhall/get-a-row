@@ -55,6 +55,7 @@ const Menu = ({ isOpen, onClose }: MenuProps) => {
     setHasOngoingGame(false);
     setPickedTasks([]);
     setLastCompletedTask("");
+    setHasBingo(false);
   };
   const changeName = () => {
     onClose();

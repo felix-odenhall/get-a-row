@@ -41,6 +41,7 @@ export const BingoGrid = () => {
       alignItems="center"
       justifyContent="center"
       flexDirection="column"
+      mt="8vh"
     >
       <Text
         as="h2"

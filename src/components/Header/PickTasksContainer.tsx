@@ -43,6 +43,7 @@ const PickTasksContainer = () => {
           boxShadow="base"
           borderRadius="0"
           data-cy="startGameButton"
+          h="full"
         >
           Start game
         </Button>
