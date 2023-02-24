@@ -48,7 +48,7 @@ export const SelectTasks = () => {
       <UnorderedList
         listStyleType="none"
         mx="auto"
-        mt="4"
+        mt="24"
         mb="10"
         justifyContent="center"
         px="1"
