@@ -8,7 +8,14 @@ export const GameBoard = () => {
   }));
 
   return (
-    <Box w="100%" h="100vh" bg={!hasBingo ? "#00CBFE" : "white"} p="2">
+    <Box
+      w="100%"
+      h="100vh"
+      bg={!hasBingo ? "#00CBFE" : "white"}
+      p="2"
+      pos="fixed"
+      mt="12"
+    >
       {hasBingo ? <HasBingo /> : <BingoGrid />}
     </Box>
   );

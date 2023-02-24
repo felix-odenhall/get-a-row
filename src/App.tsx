@@ -17,7 +17,7 @@ const App = () => {
   return (
     <>
       <Header />
-      <Box as="main" w="100%" h="full">
+      <Box as="main" w="100%" h="full" bg="#00CBFE">
         {hasUsername && !hasOngoingGame && <SelectTasks />}
         {hasUsername && hasOngoingGame && <GameBoard />}
         {!hasUsername && <CreateUserForm />}
