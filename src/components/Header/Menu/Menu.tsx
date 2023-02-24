@@ -8,14 +8,14 @@ import {
   UnorderedList,
 } from "@chakra-ui/react";
 import useStore from "../../../store/zustandStore";
-import NavbarListButton from "./NavbarListButton";
+import MenuListButton from "./MenuListButton";
 
-interface NavbarProps {
+interface MenuProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-const Navbar = ({ isOpen, onClose }: NavbarProps) => {
+const Menu = ({ isOpen, onClose }: MenuProps) => {
   const {
     setLastCompletedTask,
     shuffleArr,
@@ -63,6 +63,7 @@ const Navbar = ({ isOpen, onClose }: NavbarProps) => {
     setLastCompletedTask("");
     setUsername("");
     setHasUsername(false);
+    setHasBingo(false);
   };
 
   return (
@@ -79,7 +80,7 @@ const Navbar = ({ isOpen, onClose }: NavbarProps) => {
         backdropFilter="auto"
         backdropBlur="6px"
       />
-      <DrawerContent h="fill" w="30%" mt="8.5vh" bg="white">
+      <DrawerContent h="fill" w="30%" mt="8vh" bg="white">
         <DrawerHeader
           w="100%"
           textAlign="center"
@@ -92,15 +93,15 @@ const Navbar = ({ isOpen, onClose }: NavbarProps) => {
 
         <DrawerBody px="0">
           <UnorderedList listStyleType="none" m="0">
-            <NavbarListButton onClick={changeName} buttonName="Change name" />
+            <MenuListButton onClick={changeName} buttonName="Change name" />
 
             {hasOngoingGame && (
               <>
-                <NavbarListButton
+                <MenuListButton
                   onClick={pickNewTasks}
                   buttonName="Pick new tasks"
                 />
-                <NavbarListButton onClick={restartGame} buttonName="Restart" />
+                <MenuListButton onClick={restartGame} buttonName="Restart" />
               </>
             )}
           </UnorderedList>
@@ -112,4 +113,4 @@ const Navbar = ({ isOpen, onClose }: NavbarProps) => {
   );
 };
 
-export default Navbar;
+export default Menu;
