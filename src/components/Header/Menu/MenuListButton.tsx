@@ -1,11 +1,11 @@
 import { Box, ListItem, Text } from "@chakra-ui/react";
 
-interface NavbarListButtonProps {
+interface MenuListButtonProps {
   onClick: () => void;
   buttonName: string;
 }
 
-const NavbarListButton = ({ onClick, buttonName }: NavbarListButtonProps) => {
+const MenuListButton = ({ onClick, buttonName }: MenuListButtonProps) => {
   return (
     <ListItem>
       <Box
@@ -26,4 +26,4 @@ const NavbarListButton = ({ onClick, buttonName }: NavbarListButtonProps) => {
   );
 };
 
-export default NavbarListButton;
+export default MenuListButton;

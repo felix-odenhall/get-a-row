@@ -8,7 +8,7 @@ import {
 import useStore from "../../store/zustandStore";
 import HamburgerIcon from "./HamburgerIcon";
 import PickTasksContainer from "./PickTasksContainer";
-import Navbar from "./Navbar/Navbar";
+import Menu from "./Menu/Menu";
 
 export const Header = () => {
   const { hasOngoingGame, hasUsername } = useStore((state) => ({
@@ -23,7 +23,7 @@ export const Header = () => {
     <>
       <Box
         as="header"
-        pos="sticky"
+        pos="fixed"
         top="0"
         left="0"
         w="100%"
@@ -47,6 +47,9 @@ export const Header = () => {
             fontWeight="bold"
             bgGradient="linear(to-b, pink.700, cyan.600)"
             bgClip="text"
+            textAlign="center"
+            w="100%"
+            ml="7"
           >
             Get A Row
           </Text>
@@ -56,7 +59,7 @@ export const Header = () => {
           ) : (
             <CloseButton fontSize="xl" w="5" mr="1" />
           )}
-          <Navbar isOpen={isOpen} onClose={onClose} />
+          <Menu isOpen={isOpen} onClose={onClose} />
         </Box>
         {hasUsername && !hasOngoingGame && <PickTasksContainer />}
       </Box>
