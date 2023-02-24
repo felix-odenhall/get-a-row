@@ -36,15 +36,14 @@ export const HasBingo = () => {
       <BingoAnimation />
       <Button
         bg="#FF7200"
-        py="8"
+        py="6"
         my="1.5"
-        w="52"
         border="2px"
         borderColor="black"
         borderRadius="2xl"
         fontWeight="semibold"
         color="white"
-        fontSize="3xl"
+        fontSize="2xl"
         boxShadow="0 2px 0 0.5px rgba(0, 0, 0, 1)"
         onClick={restartGame}
         data-cy="restartGame"
